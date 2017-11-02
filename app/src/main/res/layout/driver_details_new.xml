@@ -1,0 +1,736 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true"
+    android:scrollbars = "vertical"
+    android:background="#ececec">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="140dp"
+            android:background="@drawable/vehicle_bg_new"
+            android:divider="@drawable/vertical_divider_1"
+            android:orientation="horizontal"
+            android:showDividers="middle"
+            android:gravity="center_horizontal">
+
+
+            <TextView
+                android:id="@+id/lblDriverName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom"
+                android:layout_marginBottom="15dp"
+                android:background="#af000000"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:textColor="#fff"
+                android:textSize="25dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/carinfo_image"
+            android:id="@+id/linearLayout6"
+            android:layout_margin="12dp"
+            android:background="@color/part_back_color">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+
+                    android:text="car name" />
+
+                <EditText
+                    android:id="@+id/idtvDriverName"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/abc_edit_text_material" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+
+                    android:text="Registration #" />
+
+                <EditText
+                    android:id="@+id/idtvLicence"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/abc_edit_text_material" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Model" />
+
+                <EditText
+                    android:id="@+id/idtvLicenceExp"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/abc_edit_text_material" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Vin" />
+
+                <EditText
+                    android:id="@+id/idtvVin"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/abc_edit_text_material" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Chassis #" />
+
+                <EditText
+                    android:id="@+id/idtvchassis_number"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/abc_edit_text_material" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Type" />
+
+                <Spinner
+                    android:id="@+id/vehicle_type"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_marginRight="5dp"
+                    android:spinnerMode="dropdown"
+                    android:background="@drawable/abc_edit_text_material" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Fuel Type" />
+
+                <Spinner
+                    android:id="@+id/idtvfuel_type"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_marginRight="5dp"
+                    android:spinnerMode="dropdown"
+                    android:background="@drawable/abc_edit_text_material" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Fuel Consumption\n(per 100km)" />
+
+                <EditText
+                    android:id="@+id/idtvnorm_avg_fuel_consumption"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionDone"
+                    android:textSize="12dp"
+                    android:layout_marginTop="5dp"
+                    android:maxLines="1"
+                    android:inputType="numberDecimal"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/abc_edit_text_material" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Insurance Expiry" />
+
+                <TextView
+                    android:id="@+id/idtvInsuranceExpiry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/abc_edit_text_material" />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:divider="@drawable/vertical_divider_1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/carinfo_txt_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/pressed_state_pmy_score"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Edit"
+                android:textColor="#fff"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:id="@+id/carinfo_txt_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/pressed_state_pmy_score"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Cancel"
+                android:textColor="#fff"
+                android:layout_weight="0.5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:divider="@drawable/vertical_divider_1"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/idtvRoutineMaintinanece"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/pressed_state_pmy_score"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Routine Maintenance"
+                android:textColor="#fff" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:divider="@drawable/vertical_divider_1"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/idtvMaintinanece"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/pressed_state_pmy_score"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Maintenance"
+                android:textColor="#fff" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/part_back_color"
+            android:gravity="center"
+            android:id="@+id/linearLayout5"
+            android:layout_below="@+id/carinfo_btn_maintenance"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Driver Details"
+                android:textColor="@color/button_material_dark" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/linearLayout5"
+            android:id="@+id/linearLayout7"
+            android:layout_margin="12dp"
+            android:layout_marginBottom="20dp"
+            android:background="@color/part_back_color">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="First Name"
+                    />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/carinfo_txt_firstname"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Last Name"
+                    />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/carinfo_txt_lastname"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Middle Name"
+                     />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/carinfo_txt_middlename"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Address"
+                     />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/carinfo_txt_address"
+                    />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Phone"
+                    />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:maxLines="1"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/carinfo_txt_phone"
+                    android:inputType="phone" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Email"
+                     />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:inputType="textEmailAddress"
+                    android:maxLines="1"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/carinfo_txt_email"
+                     />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Driver&apos;s Licence Number"
+                     />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionNext"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/carinfo_txt_licenseNumber"
+                     />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Driver&apos;s Licence Class"
+                     />
+
+                <EditText
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:imeOptions="actionDone"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:layout_marginRight="5dp"
+                    android:id="@+id/carinfo_txt_licenseClass"
+                     />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:divider="@drawable/vertical_divider_1"
+                android:orientation="horizontal" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:text="Driver&apos;s Expiry Date"
+                   />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:textSize="12dp"
+                    android:layout_marginTop="-5dp"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_marginRight="5dp"
+                    android:background="@drawable/abc_edit_text_material"
+                    android:id="@+id/carinfo_txt_driverExpiry"
+                     />
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:divider="@drawable/vertical_divider_1"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10dp">
+
+            <TextView
+                android:id="@+id/carinfo_txt_driver_save"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/pressed_state_pmy_score"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Edit"
+                android:textColor="#fff"
+                android:layout_weight="0.5" />
+
+            <TextView
+                android:id="@+id/carinfo_txt_driver_cancel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="15dp"
+                android:layout_marginRight="15dp"
+                android:background="@drawable/pressed_state_pmy_score"
+                android:gravity="center"
+                android:padding="6dp"
+                android:text="Cancel"
+                android:textColor="#fff"
+                android:layout_weight="0.5" />
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

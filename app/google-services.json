@@ -1,0 +1,35 @@
+{
+  "project_info": {
+    "project_number": "369356900512",
+    "project_id": "vehicle-tracking-app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:369356900512:android:c5c5564fc82fe1a0",
+        "android_client_info": {
+          "package_name": "com.lineztech.farhan.vehicaltarckingapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDOrum3CTcO4zCgMLP17691LXofmJZN7Ek"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

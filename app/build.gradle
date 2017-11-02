@@ -1,0 +1,99 @@
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        classpath 'io.fabric.tools:gradle:1.+'
+    }
+}
+apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.1"
+
+    lintOptions {
+        disable 'MissingTranslation'
+    }
+
+
+    defaultConfig {
+        applicationId "com.lineztech.farhan.vehicaltarckingapp"
+        minSdkVersion 17
+        targetSdkVersion 26
+        versionCode 5
+        versionName "5.0"
+
+        // Enabling multidex support.
+        multiDexEnabled true
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dexOptions {
+        javaMaxHeapSize "4g" //specify the heap size for the dex process
+    }
+
+}
+
+
+
+
+sourceSets {
+    main {
+        java.srcDirs = ['src']
+        resources.srcDirs = ['src']
+    }
+
+}
+
+
+
+
+repositories {
+    maven {
+        url 'https://dl.bintray.com/sj/maven/'
+        maven { url "https://jitpack.io" }
+    }
+    maven { url 'https://maven.fabric.io/public' }
+    maven { url 'https://maven.google.com' }
+
+}
+
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+
+    compile('com.crashlytics.sdk.android:crashlytics:2.6.8@aar') {
+        transitive = true;
+    }
+
+
+    compile 'com.android.support:appcompat-v7:26.0.0'
+    compile 'com.android.support:mediarouter-v7:26.0.0'
+    compile 'com.android.support:design:26.0.0'
+    compile 'org.jbundle.util.osgi.wrapped:org.jbundle.util.osgi.wrapped.org.apache.http.client:4.1.2'
+    compile 'br.com.liveo:navigationdrawer-material:2.5.1'
+    compile 'com.google.android.gms:play-services:8.3.0'
+    compile 'com.google.maps.android:android-maps-utils:0.4.+'
+    compile 'com.mcxiaoke.volley:library-aar:1.0.0'
+    compile 'com.yahoo.mobile.client.android.util.rangeseekbar:rangeseekbar-library:0.1.0'
+    compile 'com.numetriclabz.numandroidcharts:numandroidcharts:1.0.8'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.0.9'
+    compile 'com.wdullaer:materialdatetimepicker:2.4.0'
+    compile 'com.android.support:multidex:1.0.1'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.google.code.gson:gson:2.8.1'
+    testCompile 'junit:junit:4.12'
+}
+
+//apply plugin: 'com.google.gms.google-services'

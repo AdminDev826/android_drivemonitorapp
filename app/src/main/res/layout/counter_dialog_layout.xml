@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:background="@drawable/sos_top_layout"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="20dp" >
+
+        <TextView
+            android:id="@+id/textView30"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:padding="11dp"
+            android:textColor="#fff"
+            android:textSize="16dp"
+            android:text="WARNING !" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Message"
+        android:id="@+id/counter_dialog_txt_message"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="10dp"
+        android:textSize="13dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Medium Text"
+        android:id="@+id/counter_dialog_txt_time"
+        android:textColor="@color/colorAccent"
+        android:layout_marginTop="10dp"
+        android:textSize="12dp"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="SHUT DOWN\n NOW"
+            android:id="@+id/counter_dialog_txt_shutdown"
+            android:gravity="center"
+            android:textSize="10dp"
+            android:background="@color/backColor"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="35dp"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="IGNORE"
+            android:id="@+id/counter_dialog_txt_ignore"
+            android:layout_marginLeft="20dp"
+            android:gravity="center"
+            android:textSize="10dp"
+            android:background="@color/backColor"
+            android:textColor="#ffffff" />
+    </LinearLayout>
+
+</LinearLayout>
