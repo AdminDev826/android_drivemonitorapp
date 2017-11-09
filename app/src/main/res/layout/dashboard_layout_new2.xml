@@ -1,0 +1,722 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/line_score_data"
+        android:id="@+id/frame_img">
+
+        <FrameLayout
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginRight="100dp"
+                android:background="@drawable/score_layer">
+
+                <util.TextViewPlus
+                    android:id="@+id/dashboard_txt_score"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/textView46"
+                    android:layout_width="wrap_content"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:text="MY SCORE"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="10dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/frame_kms_driven"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginLeft="100dp"
+                android:background="@drawable/score_layer">
+
+                <util.TextViewPlus
+                    android:id="@+id/dashboard_txt_driven"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="0"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="25dp" />
+
+                <TextView
+                    android:id="@+id/textView48"
+                    android:layout_width="60dp"
+                    android:layout_height="35dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:gravity="center_horizontal"
+                    android:text="KMs DRIVEN TODAY"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textSize="9dp" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/speed_layer">
+
+                <util.TextViewPlus
+                    android:id="@+id/dashboard_txt_speed"
+                    android:layout_width="55dp"
+                    android:layout_height="58dp"
+                    android:layout_gravity="center_horizontal|bottom"
+                    android:gravity="center_horizontal"
+                    android:text="0 KM"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#ffffff" />
+
+                <FrameLayout
+                    android:id="@+id/speed_needle_main"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/speed_needle_main"></FrameLayout>
+
+                <FrameLayout
+                    android:id="@+id/speed_needle_piece"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:background="@drawable/speed_needle_piece" />
+            </FrameLayout>
+
+        </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:text="DEMO1"
+            android:id="@+id/dashboard_txt_trackerName"
+            android:paddingLeft="20dp"
+            android:paddingTop="20dp"
+            android:textColor="#2cace3"
+            android:textAllCaps="true" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center_horizontal"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:id="@+id/line_score_data"
+        android:layout_above="@+id/line_current_position">
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:text="TODAY&apos;S DRIVING VIOLATIONS"
+                android:id="@+id/textView24"
+                android:textColor="#1c1c1c"
+                android:textStyle="bold"
+                android:textSize="@dimen/dashboard_title_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Harsh Driving: 0"
+                    android:id="@+id/dashboard_txt_harsh_acceleration"
+                    android:textSize="@dimen/dashboard_contecnt_size"
+                    android:textColor="#201f1f" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Speeding: 0"
+                    android:id="@+id/dashboard_txt_speeding"
+                    android:textSize="@dimen/dashboard_contecnt_size"
+                    android:textColor="#201f1f" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1.0"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:text="Long Idle: 0"
+                    android:id="@+id/dashboard_txt_hidle"
+                    android:textSize="@dimen/dashboard_contecnt_size"
+                    android:textColor="#201f1f" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/common_plus_signin_btn_text_dark_disabled"
+        android:padding="5dp"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp"
+        android:id="@+id/line_current_position"
+        android:layout_above="@+id/textView33">
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="24dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="5dp"
+            android:src="@drawable/driving" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:textSize="@dimen/dashboard_title_size"
+            android:textStyle="bold"
+            android:id="@+id/dashboard_txt_status_title"
+            android:layout_marginLeft="5dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/dashboard_txt_current_driving_on"
+            android:textSize="@dimen/dashboard_contecnt_size"
+            android:layout_marginLeft="8dp" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="LAST TRIP SUMMARY"
+        android:id="@+id/textView33"
+        android:textColor="#1c1c1c"
+        android:textStyle="bold"
+        android:layout_marginTop="8dp"
+        android:textSize="@dimen/dashboard_title_size"
+        android:layout_centerHorizontal="true"
+        android:layout_above="@+id/line_trip_img" />
+
+    <LinearLayout
+        android:id="@+id/line_trip_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/line_trip_data"
+        android:layout_marginTop="-10dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_distance"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_time"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_fuel"></LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_speed"></LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="-5dp"
+        android:layout_alignParentBottom="false"
+        android:id="@+id/line_trip_data"
+        android:layout_above="@+id/layout_maintenance">
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1.0" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="2.5KM"
+                android:id="@+id/dashboard_last_km"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1.0" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="2 MINS"
+                android:id="@+id/dashboard_last_mins"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1.0" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="1.5 L"
+                android:id="@+id/dashboard_last_fuel"
+                android:textSize="12dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:layout_weight="1.0">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceSmall"
+                android:text="120 Km/h"
+                android:id="@+id/dashboard_last_speed"
+                android:textSize="12dp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/layout_maintenance"
+        android:layout_marginTop="8dp"
+        android:layout_above="@+id/line_menu">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/line_maintenance_menu"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/line_trip_data"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/side_nav_bar"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingBottom="2dp"
+                android:paddingTop="2dp">
+
+                <TextView
+                    android:id="@+id/textView38"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="VEHICLE MAINTENANCE"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/dashboard_title_size"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/line_maintenance_data"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="false"
+                android:layout_below="@+id/line_maintenance_menu"
+                android:layout_marginBottom="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total Maintenance Spend"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textSize="12dp"
+                            android:textColor="@color/colorPrimary"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="This Month:"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/dashboard_maintenance_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="$0"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/abc_input_method_navigation_guard"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="This Year:"
+                            android:textAppearance="?android:attr/textAppearanceSmall"
+                            android:textColor="@color/colorPrimary"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/dashboard_maintenance_year"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+                            android:text="$0"
+                            android:textAppearance="?android:attr/textAppearanceMedium"
+                            android:textColor="@color/abc_input_method_navigation_guard"
+                            android:textSize="15dp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1.0"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/textView25"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="UPCOMING EVENTS"
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="@color/colorPrimary"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/dashboard_txt_event_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#1a1717"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:id="@+id/dashboard_txt_event_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text=""
+                        android:textAppearance="?android:attr/textAppearanceSmall"
+                        android:textColor="#1a1717"
+                        android:textSize="10dp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/line_menu">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1.0"
+            android:background="@drawable/pressed_state_pmy_score"
+            android:orientation="vertical"
+            android:id="@+id/dashboard_item_current_location">
+
+
+            <TextView
+                android:id="@+id/textView8"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/ic_explore_24dp"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="-5dp"
+                android:gravity="center"
+                android:paddingBottom="1dp"
+                android:paddingTop="1dp"
+                android:text="Current Location"
+                android:textColor="#fff"
+                android:textSize="@dimen/dashboard_contecnt_size"
+                android:singleLine="true" />
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1.0"
+            android:background="@drawable/pressed_state_pmy_score"
+            android:orientation="vertical"
+            android:id="@+id/dashboard_item_geo_fence">
+
+            <TextView
+                android:id="@+id/textView43"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/geofence"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="-5dp"
+                android:gravity="center"
+                android:paddingBottom="1dp"
+                android:paddingTop="1dp"
+                android:text="Geo Fence"
+                android:textColor="#fff"
+                android:textSize="@dimen/dashboard_contecnt_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1.0"
+            android:background="@drawable/pressed_state_pmy_score"
+            android:orientation="vertical"
+            android:id="@+id/dashboard_item_immobilizer">
+
+            <TextView
+                android:id="@+id/textView44"
+                android:layout_width="45dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/immobilizer"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="-5dp"
+                android:gravity="center"
+                android:paddingBottom="1dp"
+                android:paddingTop="1dp"
+                android:text="Immobilizer"
+                android:textColor="#fff"
+                android:textSize="@dimen/dashboard_contecnt_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="1dp"
+            android:layout_marginRight="1dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_weight="1.0"
+            android:background="@drawable/pressed_state_pmy_score"
+            android:orientation="vertical"
+            android:id="@+id/dashboard_item_smartdefence">
+
+            <TextView
+                android:id="@+id/textView45"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="@drawable/car"
+                android:gravity="center"
+                android:textColor="#fff"
+                android:textSize="24dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="2dp"
+                android:layout_marginTop="-5dp"
+                android:gravity="center"
+                android:paddingBottom="1dp"
+                android:paddingTop="1dp"
+                android:text="SmartDefence"
+                android:textColor="#fff"
+                android:textSize="@dimen/dashboard_contecnt_size" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

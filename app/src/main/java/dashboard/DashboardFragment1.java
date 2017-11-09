@@ -114,7 +114,7 @@ public class DashboardFragment1 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (v != null) return v;
-        v = inflater.inflate(R.layout.dashboard_layout_new1, container, false);
+        v = inflater.inflate(R.layout.dashboard_layout_new2, container, false);
         init();
         return v;
     }
