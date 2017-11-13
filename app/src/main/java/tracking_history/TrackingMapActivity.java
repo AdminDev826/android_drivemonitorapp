@@ -104,9 +104,11 @@ public class TrackingMapActivity extends FragmentActivity implements OnMapReadyC
             MarkerOptions optionsDes = new MarkerOptions();
 
             options.position(origin);
-            options.title("Start Point: " + ST.getAddress());
+            options.title("Start: " + ST.getGet_time());
+            options.snippet(ST.getAddress());
             optionsDes.position(dest);
-            optionsDes.title("End Point: " + ET.getAddress());
+            optionsDes.title("End: " + ET.getGet_time());
+            optionsDes.snippet(ET.getAddress());
 
             options.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN));
             optionsDes.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));

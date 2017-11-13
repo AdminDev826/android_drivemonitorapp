@@ -108,7 +108,7 @@ public class MapGeoFence<GeoPoint> extends FragmentActivity {
             public void onClick(View v) {
 
                 if (maxRadius < 20) {
-                    Toast.makeText(context, "Radios must be greater than 20 k.m", Toast.LENGTH_LONG).show();
+                    Toast.makeText(context, "Radius must be greater than 20 k.m", Toast.LENGTH_LONG).show();
                 }else {
                     progressDialog = ProgressDialog.show(context, "",
                             "Saving Geo fence...", true);
