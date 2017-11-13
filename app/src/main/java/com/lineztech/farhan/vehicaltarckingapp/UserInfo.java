@@ -740,57 +740,50 @@ public class UserInfo extends NavigationLiveo implements OnItemClickListener {
     public void sosMenu() {
         dialog = new Dialog(context);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        dialog.setContentView(R.layout.sos);
+        dialog.setContentView(R.layout.sos1);
+
         LinearLayout idllSos = (LinearLayout) dialog.findViewById(R.id.idllSos);
-        TextView idtvCancel = (TextView) dialog.findViewById(R.id.idtvCancel);
-        idtvStartEngine = (Switch) dialog.findViewById(R.id.idtvStartEngine);
         LinearLayout idllActiveHour = (LinearLayout) dialog.findViewById(R.id.idllActiveHour);
+        TextView idtvCancel = (TextView) dialog.findViewById(R.id.idtvCancel);
 
         dialog.setCancelable(true);
         dialog.setCanceledOnTouchOutside(true);
-        DatabaseHandler db = new DatabaseHandler(context);
-        String connectionStatus = db.getStatus(tracker_id);
 
-        if (connectionStatus == null) {
-            connectionStatus = "active";
-        }
-        if (connectionStatus.equals("active")) {
-            idtvStartEngine.setChecked(true);
-        } else {
-            idtvStartEngine.setChecked(false);
-            idtvStartEngine.setEnabled(false);
-            Toast.makeText(context, "The tracker is disconnected", Toast.LENGTH_SHORT).show();
-        }
-        db.close();
         idllSos.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 dialog.dismiss();
-                sosEmergency();
+//                sosEmergency();
+
+                Intent intent = new Intent(context, SosInput.class);
+                startActivity(intent);
             }
         });
         idllActiveHour.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(context, ActiveHour.class);
-                startActivity(intent);
-            }
-        });
-        idtvStartEngine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if (!isChecked) {
-                    status = "";
-                    EngineGetStart();
-                } else {
-                    status = "";
-                    EngineGetStop();
+//                Intent intent = new Intent(context, ActiveHour.class);
+//                startActivity(intent);
+                dialog.dismiss();
+
+                progressBar.setVisibility(View.VISIBLE);
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+                        WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+                AsyncSosPressed runner = new AsyncSosPressed();
+                runner.execute();
+                if (sendSOS()) {
+                    dialog.dismiss();
                 }
+
+//                showAntiHijackingAlert();
             }
         });
         idtvCancel.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v) {
+            @Override
+            public void onClick(View view) {
                 dialog.dismiss();
             }
         });
+
         dialog.show();
     }
 
