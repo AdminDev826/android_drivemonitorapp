@@ -533,7 +533,6 @@ public class CarInfoFragment extends Fragment {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);

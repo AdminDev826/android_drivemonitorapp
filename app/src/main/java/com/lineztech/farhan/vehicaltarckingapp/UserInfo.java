@@ -52,10 +52,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.crashlytics.android.Crashlytics;
-import com.google.gson.Gson;
-
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -67,14 +64,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
-
-import active_hour.ActiveHour;
 import add_assets.AddNewAsset;
-import assing_task.AntiHijackingCountDownTimer;
 import assing_task.RSSPullService;
 import assing_task.SyncSmartDefenceData;
 import dashboard.CustomViewIconTextTabsFragment;
@@ -85,7 +77,6 @@ import liveo.Model.HelpLiveo;
 import liveo.interfaces.OnItemClickListener;
 import liveo.interfaces.OnPrepareOptionsMenuLiveo;
 import liveo.navigationliveo.NavigationLiveo;
-
 import sos.GMailSender;
 import sos.Sos;
 import sos.SosInput;
@@ -136,7 +127,6 @@ public class UserInfo extends NavigationLiveo implements OnItemClickListener {
         rl.addView(progressBar);
         layout.addView(rl, params);
         hashCode = Utils.getPreferences("hashCode", context);
-        Log.e("hashcode", " " + hashCode);
         tracker_id = Utils.getPreferences("TrackerID", context);
         Fabric.with(this, new Crashlytics());
         String strPhotoPath = Utils.getPreferences("userPhoto", context);
@@ -516,8 +506,7 @@ public class UserInfo extends NavigationLiveo implements OnItemClickListener {
                 selectedImageUri = Uri.fromFile(file);
 
             } catch (IOException e) {
-                Log.e("something", "somehitng");
-                Log.e("something", "somehitng");
+                Log.e("Error", e.getMessage());
             } finally {
                 try {
                     if (bis != null) bis.close();
@@ -865,7 +854,6 @@ public class UserInfo extends NavigationLiveo implements OnItemClickListener {
         protected String doInBackground(String... params) {
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(sosListUrl, ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);

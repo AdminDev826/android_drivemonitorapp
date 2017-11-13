@@ -99,7 +99,6 @@ public class EcoDriving extends Activity implements DatePickerDialog.OnDateSetLi
 
         final DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
         final Date dateobj = new Date();
-        Log.d("date ", "" + df.format(dateobj));
         idtvDateRange1.setText("" + df.format(dateobj));
         idtvDateRange2.setText("" + df.format(dateobj));
 
@@ -358,8 +357,6 @@ public class EcoDriving extends Activity implements DatePickerDialog.OnDateSetLi
                         "&from=" + from + "&to=" + to + "&geocoder=" + geocoder + "&" +
                         "trackers=["+tID+"]&type=service&time_filter={%22from%22:%2200:00:00%22,%22to%22:%2223:59:59%22," +
                         "%22weekdays%22:[1,2,3,4,5,6,7]}&plugin={%22plugin_id%22:46}";
-
-                Log.d("URL: ", "> " + loginURL);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -368,7 +365,6 @@ public class EcoDriving extends Activity implements DatePickerDialog.OnDateSetLi
         protected String doInBackground(String... params) {
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(loginURL, ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
@@ -438,7 +434,6 @@ public class EcoDriving extends Activity implements DatePickerDialog.OnDateSetLi
         protected String doInBackground(String... params) {
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(isReportGenratedURL, ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);

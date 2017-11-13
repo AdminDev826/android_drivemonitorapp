@@ -279,7 +279,6 @@ public class MapGeoFence<GeoPoint> extends FragmentActivity {
             String strParams = params.toString();
             String hashCode = Utils.getPreferences("hashCode", context);
             url = "http://smarttrack.iconnectcloudsolutions.com/api-v2/zone/create?hash=" + hashCode + "&zone=" + strParams;
-            Log.d("URL", url);
         }
 
         protected String doInBackground(String... params) {
@@ -290,7 +289,6 @@ public class MapGeoFence<GeoPoint> extends FragmentActivity {
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Log.e("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);

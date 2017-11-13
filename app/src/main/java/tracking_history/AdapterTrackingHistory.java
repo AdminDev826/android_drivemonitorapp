@@ -102,7 +102,6 @@ public class AdapterTrackingHistory extends BaseAdapter {
         try {
             Date date1 = simpleDateFormat.parse(starTime);
             Date date2 = simpleDateFormat.parse(endTime);
-            System.out.println("checking date" + new SimpleDateFormat("hh:mm a").format(date1));
             holder.idtvStartTime.setText(new SimpleDateFormat("hh:mm a").format(date1));
             holder.idtvEndTime.setText(new SimpleDateFormat("hh:mm a").format(date2));
         } catch (ParseException ex) {
@@ -119,10 +118,6 @@ public class AdapterTrackingHistory extends BaseAdapter {
             long minutes = TimeUnit.MILLISECONDS.toMinutes(diff);
             long days = TimeUnit.MILLISECONDS.toDays(diff);
             long hours = TimeUnit.MILLISECONDS.toHours(diff);
-
-            Log.d("days", "" + days);
-            Log.d("minuts", "" + minutes);
-            Log.d("hours", "" + hours);
 
             seconds = seconds / 100;
 
@@ -237,8 +232,6 @@ public class AdapterTrackingHistory extends BaseAdapter {
                 String lng = location.getString("lng");
                 latStartAd = lat;
                 lngStartAd = lng;
-                Log.d("lat: ", "" + lat);
-                Log.d("lng: ", "" + lng);
 
             } catch (JSONException e) {
                 // TODO Auto-generated catch block
@@ -279,8 +272,6 @@ public class AdapterTrackingHistory extends BaseAdapter {
                 String lng = location.getString("lng");
                 latEndAd = lat;
                 lngEndAd = lng;
-                Log.d("lat: ", "" + lat);
-                Log.d("lng: ", "" + lng);
 
             } catch (JSONException e) {
                 // TODO Auto-generated catch block

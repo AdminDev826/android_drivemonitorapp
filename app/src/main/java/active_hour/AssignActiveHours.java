@@ -23,12 +23,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.crashlytics.android.Crashlytics;
 import com.lineztech.farhan.vehicaltarckingapp.R;
-import com.lineztech.farhan.vehicaltarckingapp.ServiceHandler;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.text.DateFormat;
@@ -38,9 +32,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
-
-import assing_task.AdptorAssignTask;
-import assing_task.AssignTask;
 import db.DatabaseHandler;
 import io.fabric.sdk.android.Fabric;
 import util.AppSingleton;
@@ -51,12 +42,10 @@ import util.Utils;
  */
 public class AssignActiveHours extends Activity {
     Context context;
-    TextView idtvToday, idtvYesterday, idtvWeek, idtvMonth, idtvYear;
     ListView listTrackingHistory;
     ProgressDialog progressDialog;
     ArrayList arrTrackingHistory;
     LinearLayout idllDays;
-    String urltrackingHistory;
     String currentTime;
     String hashCode, TrackerID = "37712";
     AdptorAssignhours adapter;
@@ -87,7 +76,6 @@ public class AssignActiveHours extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(currentTime);
 
         listTrackingHistory.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
@@ -185,8 +173,6 @@ public class AssignActiveHours extends Activity {
             ActiveHourWS activeHourWS = new ActiveHourWS();
             activeHourWS.setDay(getDayAsInteger(listtrackingHistory.get(i).getDay()));
             activeHourWS.setStartTime(convertTime(listtrackingHistory.get(i).getStart_time()));
-            Log.e("setStartTime", " " + activeHourWS.getStartTime());
-            Log.e("getStartTime", " " + listtrackingHistory.get(i).getStart_time());
             activeHourWS.setEndTime(convertTime(listtrackingHistory.get(i).getEnd_time()));
             listActiveHourWS.add(activeHourWS);
         }

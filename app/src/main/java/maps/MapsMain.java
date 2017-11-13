@@ -146,7 +146,6 @@ public class MapsMain<GeoPoint> extends FragmentActivity implements GoogleMap.On
         protected String doInBackground(String... params) {
             ServiceHandler shh = new ServiceHandler();
             String jsonStrr = shh.makeServiceCall(cLocationURL, ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStrr);
             if (jsonStrr != null) {
                 try {
 

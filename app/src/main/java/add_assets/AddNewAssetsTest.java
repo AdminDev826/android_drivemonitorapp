@@ -316,14 +316,12 @@ public class AddNewAssetsTest extends Activity {
             //http://localhost:9000/api/products/GetAllProducts
             HttpPost httpPost = new HttpPost(url);
 
-            System.out.println(url);
             String json = "";
 
             // 4. convert JSONObject to JSON to String
 
             json = loginJobj.toString();
 
-            System.out.println(json);
             // 5. set json to StringEntity
             StringEntity se = new StringEntity(json);
 

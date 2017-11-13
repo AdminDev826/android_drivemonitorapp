@@ -180,7 +180,6 @@ public class ActiveHour extends Activity implements TimePickerDialog.OnTimeSetLi
                 String seconds = intent.getStringExtra("time");
                 boolean shutDownComplete = intent.getBooleanExtra("shutDownComplete", false);
                 String trackerName = intent.getStringExtra("DeviceName");
-                Log.e("s", "sss" + seconds + shutDownComplete + trackerName);
                 if (alertView != null && alertView.isShowing()) {
                     TextView timerDisplay = (TextView) ((AlertDialog) alertView).findViewById(R.id.counter_dialog_txt_time);
                     timerDisplay.setText("Initiating shutdown sequence in : " + seconds);
@@ -455,7 +454,6 @@ public class ActiveHour extends Activity implements TimePickerDialog.OnTimeSetLi
                     DatabaseHandler db = new DatabaseHandler(context);
                     db.updateExistingTime(day, startTime, endTime, saved_tracker);
                     String token = Utils.getPreferences("portalToken", context);
-                    Log.e("token", " " + token);
                     if (token.equalsIgnoreCase("")) {
                         loginToPortalServer();
                     } else {
@@ -694,7 +692,6 @@ public class ActiveHour extends Activity implements TimePickerDialog.OnTimeSetLi
                 }
             }
             String token = Utils.getPreferences("portalToken", context);
-            Log.e("token", " " + token);
             if (token.equalsIgnoreCase("")) {
                 loginToPortalServer();
             } else {
@@ -714,8 +711,6 @@ public class ActiveHour extends Activity implements TimePickerDialog.OnTimeSetLi
             ActiveHourWS activeHourWS = new ActiveHourWS();
             activeHourWS.setDay(getDayAsInteger(listtrackingHistory.get(i).getDay()));
             activeHourWS.setStartTime(convertTime(listtrackingHistory.get(i).getStart_time()));
-            Log.e("setStartTime", " " + activeHourWS.getStartTime());
-            Log.e("getStartTime", " " + listtrackingHistory.get(i).getStart_time());
             activeHourWS.setEndTime(convertTime(listtrackingHistory.get(i).getEnd_time()));
             listActiveHourWS.add(activeHourWS);
         }
@@ -1101,7 +1096,6 @@ public class ActiveHour extends Activity implements TimePickerDialog.OnTimeSetLi
                 params.clear();
                 params.put("trackerId", trackerID);
                 params.put("isAntiHiJackingEnable", String.valueOf(checked));
-                Log.e("e", "isAntiHiJackingEnable " + params.get("isAntiHiJackingEnable"));
                 params.put("antiHiJackingCountDownTime", counterTextView.getText().toString());
                 syncAntihijackingEnabled(params);
                 break;

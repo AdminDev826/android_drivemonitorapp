@@ -106,7 +106,6 @@ public class ExclusionTimePeriod {
                     period.setTimeStart(hhmmss);
                     period.setTimeEnd(hhmmss);
 
-                    System.out.println(hhmmss+" Ok");
                 }
             }
         }

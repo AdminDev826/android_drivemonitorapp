@@ -289,7 +289,6 @@ public class NavigationFragment extends Fragment {
                                     lon = jsonUserInfo.getString("lng");
                                     String lastUpdate = state.getString("last_update");
                                     String movement_status = state.getString("movement_status");
-                                    Log.e("TAG", "Last update :" + lastUpdate + "--tracker:" + trackers.get(finalI).getTrackerID() + ", speed: " + strSpeed);
                                     if(firstLoad && trackerID.equals(trackers.get(finalI).getTrackerID())){
                                         latitude = Double.parseDouble(lat);
                                         longitude = Double.parseDouble(lon);

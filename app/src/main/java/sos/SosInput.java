@@ -213,7 +213,6 @@ public class SosInput extends Activity {
         String message = Utils.getPreferences("sos_message", context);
         String phone_numbers = Utils.getPreferences("sos_sms_numbers", context);
         String phoneCallNumber = Utils.getPreferences("sos_phone_call", context);
-        Log.e("p", " " + phone_numbers);
         String[] smsNumArray = phone_numbers.split(", ");
 
         idetMessage.setText(message);

@@ -156,7 +156,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Getting URL to the Google Directions API
         String url = getUrl(origin, dest);
-        Log.d("onMapClick", url.toString());
         FetchUrl FetchUrl = new FetchUrl();
 
         // Start downloading json data from Google Directions API
@@ -278,7 +277,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
 
             data = sb.toString();
-            Log.d("downloadUrl", data.toString());
             br.close();
 
         } catch (Exception e) {
@@ -302,7 +300,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             try {
                 // Fetching the data from web service
                 data = downloadUrl(url[0]);
-                Log.d("Background Task data", data.toString());
             } catch (Exception e) {
                 Log.d("Background Task", e.toString());
             }
@@ -335,14 +332,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             try {
                 jObject = new JSONObject(jsonData[0]);
-                Log.d("ParserTask",jsonData[0].toString());
                 DataParser parser = new DataParser();
-                Log.d("ParserTask", parser.toString());
 
                 // Starts parsing data
                 routes = parser.parse(jObject);
-                Log.d("ParserTask","Executing routes");
-                Log.d("ParserTask",routes.toString());
 
             } catch (Exception e) {
                 Log.d("ParserTask",e.toString());
@@ -380,9 +373,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 lineOptions.addAll(points);
                 lineOptions.width(10);
                 lineOptions.color(Color.RED);
-
-                Log.d("onPostExecute","onPostExecute lineoptions decoded");
-
             }
 
             // Drawing polyline in the Google Map for the i-th route

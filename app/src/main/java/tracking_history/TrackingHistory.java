@@ -267,7 +267,6 @@ public class TrackingHistory extends Activity {
         protected String doInBackground(String... params) {
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(urltrackingHistory, ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
@@ -346,8 +345,6 @@ public class TrackingHistory extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(newTime);
-
     }
 
 
@@ -370,8 +367,6 @@ public class TrackingHistory extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(newTime);
-
     }
 
     public void thisWeek() {
@@ -393,8 +388,6 @@ public class TrackingHistory extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(newTime);
-
     }
 
     public void thisMonth() {
@@ -415,7 +408,6 @@ public class TrackingHistory extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(newTime);
     }
 
     public void customPeriod() {
@@ -436,6 +428,5 @@ public class TrackingHistory extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(newTime);
     }
 }

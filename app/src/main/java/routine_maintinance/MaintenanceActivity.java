@@ -379,7 +379,6 @@ public class MaintenanceActivity extends Activity implements TimePickerDialog.On
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);

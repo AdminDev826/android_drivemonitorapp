@@ -115,7 +115,7 @@ public class TrackingMapActivity extends FragmentActivity implements OnMapReadyC
             mMap.addMarker(optionsDes);
 
             CameraUpdate location = CameraUpdateFactory.newLatLngZoom(
-                    origin, 15);
+                    origin, 14);
             mMap.animateCamera(location);
 
             lineOptions = new PolylineOptions();
@@ -149,7 +149,6 @@ public class TrackingMapActivity extends FragmentActivity implements OnMapReadyC
                         progressDialog.dismiss();
                         try {
                             String status = response.getString("success");
-                            Log.e("response:", response.toString());
                             if(status.equals("true")){
                                 JSONArray listtrackingHistory = response.getJSONArray("list");
                                 for (int i = 0; i < listtrackingHistory.length(); i++) {

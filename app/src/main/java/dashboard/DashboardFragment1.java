@@ -307,7 +307,6 @@ public class DashboardFragment1 extends Fragment {
                                 }
                                 setMaintenanceCost();
                             } else {
-                                Log.e("getMaintenanceData", "yes");
                                 Toast.makeText(context, "Fail !", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
@@ -462,7 +461,6 @@ public class DashboardFragment1 extends Fragment {
 
         idtvStartEngine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.e("idtvStartEngine", " " + isChecked);
                 if (!isChecked) {
                     status = "";
                     progressDialog = ProgressDialog.show(context, "",
@@ -811,7 +809,6 @@ public class DashboardFragment1 extends Fragment {
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
-                                Log.e("rrr", "rrrr");
                                 Toast.makeText(context, "Fail ! \n" + e.getMessage(), Toast.LENGTH_SHORT).show();
                             }
                         }
@@ -1035,7 +1032,6 @@ public class DashboardFragment1 extends Fragment {
                     (Request.Method.GET, connectionStatusURL, null, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            Log.e("EngineApplyStop", " " + response);
                             try {
                                 status = response.getString("success");
                                 if (status.equals("true")) {

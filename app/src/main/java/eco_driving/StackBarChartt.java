@@ -167,7 +167,6 @@ public class StackBarChartt extends AppCompatActivity {
         protected String doInBackground(String... params) {
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(reportURL, ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
@@ -212,8 +211,6 @@ public class StackBarChartt extends AppCompatActivity {
                         summaryCons.setMileage(v4);
 
                         arrSummary.add(summaryCons);
-
-                        Log.d("veer", v);
                     }
 
 

@@ -1,7 +1,6 @@
 package active_hour;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,15 +11,9 @@ import com.lineztech.farhan.vehicaltarckingapp.R;
 
 import java.util.List;
 
-import assing_task.AssignTask;
-import assing_task.MapAssign;
-
 public class AdptorAssignhours extends BaseAdapter {
     Context context;
-    String layoutRating;
-    float rating;
     String CourseID, CouresName;
-    int showLastLayOut = 0;
     protected List<Hours> listSearchedCourses;
     LayoutInflater inflater;
 
@@ -28,8 +21,6 @@ public class AdptorAssignhours extends BaseAdapter {
         this.listSearchedCourses = listSearchedCourses;
         this.inflater = LayoutInflater.from(context);
         this.context = context;
-        this.CourseID = CourseID;
-        this.CouresName = CouresName;
     }
 
     public int getCount() {

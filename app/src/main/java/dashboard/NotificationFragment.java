@@ -119,7 +119,6 @@ public class NotificationFragment extends Fragment {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(currentTime);
         loadData();
     }
 

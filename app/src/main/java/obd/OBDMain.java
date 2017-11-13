@@ -83,7 +83,6 @@ public class OBDMain extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(currentTime);
 
         progressDialog = ProgressDialog.show(context, "",
                 "Loading...", true);

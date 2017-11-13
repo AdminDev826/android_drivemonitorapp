@@ -118,18 +118,14 @@ public class LoginActivity extends Activity {
 
     private void loginToPortalServer() {
         String url = String.format("%sapp/login", AppSingleton.BASE_PORTAL_URL);
-        Log.e("e", "url " + url);
         StringRequest request = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Log.e("e", "ee" + response);
                 try {
                     JSONObject responseObject = new JSONObject(response);
                     if (responseObject.optBoolean("success")) {
                         String token = responseObject.optString("token");
                         Utils.savePreferences("portalToken", token, context);
-
-                        Log.e("eeeee", "eeeeee Servicestarted");
                         startService(new Intent(context, SyncSmartDefenceData.class));
                     }
                 } catch (JSONException e) {
@@ -164,8 +160,6 @@ public class LoginActivity extends Activity {
                     public void onResponse(JSONObject response) {
                         progressBar.setVisibility(View.GONE);
                         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
-                        // the response is already constructed as a JSONObject!
-                        Log.e("res", " " + response);
                         try {
                             status = response.getString("success");
                             if (status.equals("true")) {
@@ -180,12 +174,11 @@ public class LoginActivity extends Activity {
                                 loginToPortalServer();
                                 startApp();
                             } else {
-                                Log.e("rrrr", " else");
                                 Toast.makeText(context, "Login Fail !", Toast.LENGTH_SHORT).show();
                             }
                         } catch (JSONException e) {
 
-                            Log.e("rrrr", " JSONException");
+                            Log.e("Error", " JSONException");
                             e.printStackTrace();
                             Toast.makeText(context, "Login Fail !", Toast.LENGTH_SHORT).show();
                         }
@@ -193,7 +186,7 @@ public class LoginActivity extends Activity {
                 }, new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-                        Log.e("bbbb", "  " + error);
+                        Log.e("Error", "  " + error);
                         progressBar.setVisibility(View.GONE);
                         getWindow().clearFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
                         Toast.makeText(context, "Login Fail !", Toast.LENGTH_SHORT).show();

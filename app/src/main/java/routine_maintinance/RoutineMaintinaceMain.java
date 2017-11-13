@@ -129,7 +129,6 @@ public class RoutineMaintinaceMain extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(currentTime);
 //        DatabaseHandler dbb = new DatabaseHandler(context);
 //        savedData = dbb.getCostsByID(TrackerID);
 //        aryMaintenance = dbb.getCostsByID(TrackerID);
@@ -214,7 +213,6 @@ public class RoutineMaintinaceMain extends Activity {
         protected String doInBackground(String... params) {
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(urlMaintinenceDate, ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);

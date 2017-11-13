@@ -208,7 +208,6 @@ public class DashboardFragment extends Fragment {
 //                Intent intent = new Intent(context, EcoDriving.class);
 //                intent.putExtra("trackerID", trackerID);
 //                startActivity(intent);
-                Log.e("idtvEchoDriving", "clicked");
                 sosMenu();
             }
         });
@@ -404,7 +403,6 @@ public class DashboardFragment extends Fragment {
 
         idtvStartEngine.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                Log.e("idtvStartEngine", " " + isChecked);
                 if (!isChecked) {
                     status = "";
                     progressDialog = ProgressDialog.show(context, "",
@@ -632,7 +630,6 @@ public class DashboardFragment extends Fragment {
             try {
                 addresses = gcd.getFromLocation(Double.parseDouble(lat), Double.parseDouble(lon), 1);
                 if (addresses.size() > 0) {
-//                    System.out.println(addresses.get(0).getLocality());
                     addresses.get(0).getCountryName();
                     address = addresses.get(0).getAddressLine(0) + ", " + addresses.get(0).getCountryName();
                     idtvAddess.setText(address);
@@ -830,7 +827,6 @@ public class DashboardFragment extends Fragment {
                 (Request.Method.GET, connectionStatusURL, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("e", " " + response);
                         try {
                             status = response.getString("success");
                             if (status.equals("true")) {
@@ -891,7 +887,6 @@ public class DashboardFragment extends Fragment {
                     (Request.Method.GET, connectionStatusURL, null, new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
-                            Log.e("connectionStatusURL", " " + response);
                             try {
                                 status = response.getString("success");
                                 if (status.equals("true")) {

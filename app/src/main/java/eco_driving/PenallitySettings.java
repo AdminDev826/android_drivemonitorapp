@@ -384,8 +384,6 @@ public class PenallitySettings extends Activity {
                         "{%2210%22:" + iddtvS1.getText().toString() + ",%2220%22:" + iddtvS2.getText().toString() + ",%2230%22:" + iddtvS3.getText().toString() + ",%2250%22:" + iddtvS4.getText().toString() + "},%22speed_limit%22:" + iddetSL.getText().toString() + ",%22idling_penalty%22:" +
                         "" + idtvHA1.getText().toString() + ",%22min_idling_duration%22:" + idetHA1.getText().toString() + ",%22min_speeding_duration%22:" + iddetSL.getText().toString() + ",%22use_vehicle_speed_limit%22" +
                         ":true}";
-
-                Log.d("URL: ", "> " + loginURL);
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }
@@ -394,7 +392,6 @@ public class PenallitySettings extends Activity {
         protected String doInBackground(String... params) {
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(loginURL, ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
@@ -460,7 +457,6 @@ public class PenallitySettings extends Activity {
         protected String doInBackground(String... params) {
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(isReportGenratedURL, ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStr);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);

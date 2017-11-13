@@ -277,7 +277,6 @@ public abstract class NavigationLiveo extends AppCompatActivity {
         @Override
         public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-            Log.e("position", " " + position);
             int mPosition = (!mRemoveHeader || !mCustomHeader ? position - 1 : position);
 
             if (mPosition == -1) {
@@ -286,7 +285,6 @@ public abstract class NavigationLiveo extends AppCompatActivity {
             }
 
             HelpItem helpItem = mHelpItem.get(mPosition);
-            Log.e("helpItem.isHeader()", " " + (helpItem.isHeader()));
             if (!helpItem.isHeader()) {
                 if (position != 0 || (mRemoveHeader && mCustomHeader)) {
 

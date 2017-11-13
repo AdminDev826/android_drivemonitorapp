@@ -69,7 +69,6 @@ public class AssignTaskMain extends Activity {
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
-        System.out.println(currentTime);
 
         progressDialog = ProgressDialog.show(context, "",
                 "Loading...", true);
@@ -93,8 +92,6 @@ public class AssignTaskMain extends Activity {
         protected String doInBackground(String... params) {
             ServiceHandler sh = new ServiceHandler();
             String jsonStr = sh.makeServiceCall(urltrackingHistory, ServiceHandler.GET);
-            Log.d("Response: ", "> " + jsonStr);
-            Log.d("URL task list: ", "> " + urltrackingHistory);
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);

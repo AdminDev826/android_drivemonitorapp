@@ -125,13 +125,11 @@ public class RSSPullService extends Service {
     }
 
     private void updateData() {
-        Log.e("rr", " " + hashCode);
         urltrackingHistory = "https://api.navixy.com/v2/history/unread/list?limit=1&type=tracker&hash=" + hashCode;
         JsonObjectRequest jsonRequest = new JsonObjectRequest
                 (Request.Method.GET, urltrackingHistory, null, new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
-                        Log.e("updateData", " " + response);
                         try {
                             String status = response.getString("success");
                             if (status.equals("true")) {
@@ -254,7 +252,6 @@ public class RSSPullService extends Service {
                         Toast.makeText(context, "Anti Hi-jacking is disabled", Toast.LENGTH_SHORT).show();
                     }
                 } else if (!playingAlarm.equals("YES") && connectionStatus.equals("active")) {
-                    Log.e("rrrr", "else if");
 //            if (connectionStatus.equals("active")) {
                     if (checkPowerCut(message) && batteryAlarm.equals("ON")) {
                         Utils.savePreferences("alarm_playing", "YES", context);
@@ -278,11 +275,7 @@ public class RSSPullService extends Service {
                         intent1.putExtra("Ignition", "Ignition Detected, Enable Engine?");
                         startActivity(intent1);
                     } else {
-                        Log.e("else", "else");
-                        Log.e("state", "contains" + state.contains(" ON"));
-                        Log.e("idalarm", "equals" + strIDAlarm_ignition.equals("ON"));
                         try {
-                            Log.e("eee", "inside try");
                             String sTime = hours.getStart_time();
                             String eTime = hours.getEnd_time();
                             if (sTime != null) {
@@ -295,7 +288,6 @@ public class RSSPullService extends Service {
                                 try {
                                     date = parseFormat.parse(sTime);
                                     isInTest.setTimeStart(displayFormat.format(date) + ":00");
-                                    Log.e("24hours time", " " + parseFormat.format(date) + " = " + displayFormat.format(date));
                                 } catch (ParseException e) {
                                     e.printStackTrace();
                                 }
@@ -311,14 +303,12 @@ public class RSSPullService extends Service {
                                 try {
                                     date = parseFormat.parse(eTime);
                                     isInTest.setTimeEnd(displayFormat.format(date) + ":00");
-                                    Log.e("24hours time", " " + parseFormat.format(date) + " = " + displayFormat.format(date));
                                 } catch (ParseException e) {
                                     e.printStackTrace();
                                 }
                             }
                             isTimeIn = isInTest.isNowInPeriod();
                             if (isTimeIn == false) {
-                                Log.e("isTimeIn", "false");
                                 String vName;
                                 if (state.equals(" Parking end") && strIDAlarm_parking.equals("ON")) {
                                     Utils.savePreferences("alarm_playing", "YES", context);
@@ -331,7 +321,6 @@ public class RSSPullService extends Service {
                                 } else if (state.contains(" ON") && strIDAlarm_ignition.equals("ON")) {
                                     Utils.savePreferences("alarm_playing", "YES", context);
                                     vName = "Ignition Detected on " + deviceName + " at " + road_name;
-                                    Log.e("eeeee", "eeeee" + vName);
                                     Intent intent1 = new Intent(getBaseContext(), SmartDefenseActivity.class);
                                     intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                     intent1.putExtra("vName", vName);

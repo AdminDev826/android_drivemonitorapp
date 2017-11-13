@@ -63,7 +63,6 @@ public class ParkingGuardActivity extends Activity {
         alarm_id = intent1.getStringExtra("alarm_id");
         strIgnition = intent1.getStringExtra("Ignition");
         String park_guard = Utils.getPreferences("park-guard_" + alarm_id, context);
-        Log.e("guard_", " " + park_guard);
         park_audio = Utils.getPreferences("park-audio_" + alarm_id, context);
         park_delay = Utils.getPreferences("park-delay_" + alarm_id, context);
 

@@ -363,9 +363,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             Hours hours = new Hours();
             hours.setStart_time(cursor.getString(2));
             hours.setEnd_time(cursor.getString(3));
-            // return course
-            Log.e("eee","db"+cursor.getString(2));
-            Log.e("eee","db"+cursor.getString(3));
             cursor.close();
             return hours;
         } else {
@@ -633,7 +630,6 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery(sql, null);
         if (cursor.moveToFirst()) {
             for (int i = 0; i < cursor.getColumnCount(); i++) {
-                Log.e("ee", " " + cursor.getColumnName(i));
             }
         }
         cursor.close();
