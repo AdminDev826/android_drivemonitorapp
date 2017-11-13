@@ -171,8 +171,7 @@
             android:value="1bed234a4febb8a323b08861ff23fb956673b494" />
 
         <activity android:name=".EcallingActivity" />
-
-
+        <activity android:name="tracking_history.TrackingMapActivity" />
         <service android:name="assing_task.AntiHijackingCountDownTimer" />
     </application>
 

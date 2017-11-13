@@ -252,7 +252,7 @@ public class TrackingHistory extends Activity {
             for (int i = arrTrackingHistory.size() - 1; i > -1 ; i--) {
                 sendData.add(arrTrackingHistory.get(i));
             }
-            adapter = new AdapterTrackingHistory(context, sendData);
+            adapter = new AdapterTrackingHistory(context, sendData, hashCode, TrackerID);
             listTrackingHistory.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }
@@ -310,7 +310,7 @@ public class TrackingHistory extends Activity {
                     adapter.notifyDataSetChanged();
                     Toast.makeText(context, "Sorry there is no record to show", Toast.LENGTH_SHORT).show();
                 } else {
-                    adapter = new AdapterTrackingHistory(context, arrTrackingHistory);
+                    adapter = new AdapterTrackingHistory(context, arrTrackingHistory, hashCode, TrackerID);
                     listTrackingHistory.setAdapter(adapter);
                     adapter.notifyDataSetChanged();
                     progressDialog.dismiss();

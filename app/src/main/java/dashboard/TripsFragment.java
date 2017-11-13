@@ -162,6 +162,8 @@ public class TripsFragment extends Fragment {
     }
 
     private void loadData(){
+        progressDialog = ProgressDialog.show(context, "",
+                "Loading...", true);
         arrTrackingHistory.clear();
         JsonObjectRequest jsonRequest = new JsonObjectRequest
                 (Request.Method.GET, urltrackingHistory, null, new Response.Listener<JSONObject>() {
@@ -242,7 +244,7 @@ public class TripsFragment extends Fragment {
             for (int i = arrTrackingHistory.size() - 1; i > -1 ; i--) {
                 sendData.add(arrTrackingHistory.get(i));
             }
-            adapter = new AdapterTrackingHistory(context, sendData);
+            adapter = new AdapterTrackingHistory(context, sendData, hashCode, TrackerID);
             listTrackingHistory.setAdapter(adapter);
             adapter.notifyDataSetChanged();
         }
@@ -260,12 +262,7 @@ public class TripsFragment extends Fragment {
             sdate = URLEncoder.encode(sdate, "utf-8");
             edate = URLEncoder.encode(edate, "utf-8");
             urltrackingHistory = "https://api.navixy.com/v2/track/list?tracker_id=" + TrackerID + "&from=" + sdate + "&to=" + edate + "&hash=" + hashCode;
-            progressDialog = ProgressDialog.show(context, "",
-                    "Loading...", true);
-//            AsyncTaskRunner runner = new AsyncTaskRunner();
-//            runner.execute();
             loadData();
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -288,13 +285,7 @@ public class TripsFragment extends Fragment {
             sdate = URLEncoder.encode(sdate, "utf-8");
             edate = URLEncoder.encode(edate, "utf-8");
             urltrackingHistory = "https://api.navixy.com/v2/track/list/?tracker_id=" + TrackerID + "&from=" + sdate + "&to=" + edate + "&hash=" + hashCode;
-
-            progressDialog = ProgressDialog.show(context, "",
-                    "Loading...", true);
             loadData();
-//            AsyncTaskRunner runner = new AsyncTaskRunner();
-//            runner.execute();
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -323,13 +314,7 @@ public class TripsFragment extends Fragment {
             sdate = URLEncoder.encode(sdate, "utf-8");
             edate = URLEncoder.encode(edate, "utf-8");
             urltrackingHistory = "https://api.navixy.com/v2/track/list/?tracker_id=" + TrackerID + "&from=" + sdate + "&to=" + edate + "&hash=" + hashCode;
-
-            progressDialog = ProgressDialog.show(context, "",
-                    "Loading...", true);
             loadData();
-//            AsyncTaskRunner runner = new AsyncTaskRunner();
-//            runner.execute();
-
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
@@ -354,12 +339,7 @@ public class TripsFragment extends Fragment {
             sdate = URLEncoder.encode(sdate, "utf-8");
             edate = URLEncoder.encode(edate, "utf-8");
             urltrackingHistory = "https://api.navixy.com/v2/track/list/?tracker_id=" + TrackerID + "&from=" + sdate + "&to=" + edate + "&hash=" + hashCode;
-
-            progressDialog = ProgressDialog.show(context, "",
-                    "Loading...", true);
             loadData();
-//            AsyncTaskRunner runner = new AsyncTaskRunner();
-//            runner.execute();
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

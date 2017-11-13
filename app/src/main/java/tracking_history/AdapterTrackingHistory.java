@@ -3,29 +3,14 @@ package tracking_history;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
-import android.location.Address;
-import android.location.Geocoder;
-import android.location.Location;
-import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
-
-import com.google.android.gms.maps.CameraUpdate;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.maps.GeoPoint;
 import com.lineztech.farhan.vehicaltarckingapp.R;
-import com.lineztech.farhan.vehicaltarckingapp.ServiceHandler;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -41,29 +26,30 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 import java.util.concurrent.TimeUnit;
+
 
 public class AdapterTrackingHistory extends BaseAdapter {
     Context context;
-    String layoutRating;
-    float rating;
-    String CourseID, CouresName;
     ProgressDialog progressDialog;
-    int showLastLayOut = 0;
-    List<LatLng> list;
     protected List<Track> listSearchedCourses;
     LayoutInflater inflater;
+    String hashCode, TrackerID;
+    String sAddress;
+    String eAddress;
+    String latStartAd;
+    String lngStartAd;
+    String latEndAd;
+    String lngEndAd;
 
-    public AdapterTrackingHistory(Context context, List<Track> listSearchedCourses) {
+    public AdapterTrackingHistory(Context context, List<Track> listSearchedCourses, String hashCode, String trackerId) {
         this.listSearchedCourses = listSearchedCourses;
         this.inflater = LayoutInflater.from(context);
         this.context = context;
-        this.CourseID = CourseID;
-        this.CouresName = CouresName;
+        this.TrackerID = trackerId;
+        this.hashCode = hashCode;
     }
 
     public int getCount() {
@@ -184,28 +170,16 @@ public class AdapterTrackingHistory extends BaseAdapter {
             starTime2 = starTime2.replace("/", ".");
 
             holder.textview_header_separator.setText(starTime2);
-
-
-
         }
-
-
-
-
-
-//        listSearchedCourses.get(0).getStart_date();
-//        listSearchedCourses.get(1).getStart_date();
-
         convertView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                showMap(track.getStart_date(), track.getEnd_date());
 
-//                Toast.makeText(context, "Position: " + position, Toast.LENGTH_SHORT).show();
-
-                progressDialog = ProgressDialog.show(context, "",
-                        "Loading...", true);
-                AsyncTaskRunnerLatLong runner = new AsyncTaskRunnerLatLong(track.getStart_address(), track.getEnd_address());
-                runner.execute();
+//                progressDialog = ProgressDialog.show(context, "",
+//                        "Loading...", true);
+//                AsyncTaskRunnerLatLong runner = new AsyncTaskRunnerLatLong(track.getStart_address(), track.getEnd_address());
+//                runner.execute();
             }
         });
 
@@ -215,13 +189,6 @@ public class AdapterTrackingHistory extends BaseAdapter {
     private class ViewHolder {
         TextView idtvStartTime, idtvEndTime, idtvStartAddress, idtvEndAddress, idtvDistance, idtvTotaltime, textview_header_separator;
     }
-
-    String sAddress;
-    String eAddress;
-    String latStartAd;
-    String lngStartAd;
-    String latEndAd;
-    String lngEndAd;
 
     private class AsyncTaskRunnerLatLong extends AsyncTask<String, String, String> {
         public AsyncTaskRunnerLatLong(String startAddress, String endAddress) {
@@ -342,5 +309,14 @@ public class AdapterTrackingHistory extends BaseAdapter {
 
     }
 
+    private void loadData(String sdate, String edate) {
 
+    }
+
+    private void showMap(String sdate, String edate) {
+        Intent intent = new Intent(context, TrackingMapActivity.class);
+        intent.putExtra("sdate", sdate);
+        intent.putExtra("edate", edate);
+        context.startActivity(intent);
+    }
 }
