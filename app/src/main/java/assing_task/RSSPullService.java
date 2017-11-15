@@ -20,6 +20,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
+import com.crashlytics.android.Crashlytics;
 import com.lineztech.farhan.vehicaltarckingapp.EcallingActivity;
 import com.lineztech.farhan.vehicaltarckingapp.ParkingGuardActivity;
 import com.lineztech.farhan.vehicaltarckingapp.R;
@@ -44,6 +45,7 @@ import active_hour.ActiveHour;
 import active_hour.Hours;
 import dashboard.Trackers;
 import db.DatabaseHandler;
+import io.fabric.sdk.android.Fabric;
 import util.AppSingleton;
 import util.ExclusionTimePeriod;
 import util.Utils;
@@ -68,6 +70,7 @@ public class RSSPullService extends Service {
 
     @Override
     public void onCreate() {
+        Fabric.with(this, new Crashlytics());
         Log.i(TAG, "Service onCreate");
         context = this;
         isRunning = true;

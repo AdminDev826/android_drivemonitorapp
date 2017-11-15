@@ -81,7 +81,9 @@
                     android:layout_gravity="center_horizontal|bottom"
                     android:gravity="center_horizontal"
                     android:text="0 KM"
+                    android:paddingTop="1.5dp"
                     android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:textSize="17dp"
                     android:textColor="#ffffff" />
 
                 <FrameLayout
@@ -89,7 +91,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:background="@drawable/speed_needle_main"></FrameLayout>
+                    android:background="@drawable/speed_needle_main" />
 
                 <FrameLayout
                     android:id="@+id/speed_needle_piece"
@@ -107,7 +109,7 @@
             android:text="DEMO1"
             android:id="@+id/dashboard_txt_trackerName"
             android:paddingLeft="20dp"
-            android:paddingTop="20dp"
+            android:paddingTop="12dp"
             android:textColor="#2cace3"
             android:textAllCaps="true" />
     </FrameLayout>
@@ -269,21 +271,7 @@
             <LinearLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/icon_distance"></LinearLayout>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="40dp"
-            android:layout_margin="10dp"
-            android:layout_weight="1.0"
-            android:gravity="center"
-            android:orientation="horizontal">
-
-            <LinearLayout
-                android:layout_width="50dp"
-                android:layout_height="40dp"
-                android:background="@drawable/icon_time"></LinearLayout>
+                android:background="@drawable/icon_distance" />
         </LinearLayout>
 
         <LinearLayout
@@ -297,7 +285,7 @@
             <LinearLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/icon_fuel"></LinearLayout>
+                android:background="@drawable/icon_time" />
         </LinearLayout>
 
         <LinearLayout
@@ -311,7 +299,21 @@
             <LinearLayout
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:background="@drawable/icon_speed"></LinearLayout>
+                android:background="@drawable/icon_fuel" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_margin="10dp"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/icon_speed" />
         </LinearLayout>
 
     </LinearLayout>

@@ -32,6 +32,7 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.LatLngBounds;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -40,6 +41,9 @@ import com.lineztech.farhan.vehicaltarckingapp.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 import io.fabric.sdk.android.Fabric;
@@ -82,7 +86,11 @@ public class TrackingMapActivity extends FragmentActivity implements OnMapReadyC
         Intent i = getIntent();
         sdate = i.getStringExtra("sdate");
         edate = i.getStringExtra("edate");
-        loadData();
+        try {
+            loadData();
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
@@ -120,6 +128,26 @@ public class TrackingMapActivity extends FragmentActivity implements OnMapReadyC
                     origin, 14);
             mMap.animateCamera(location);
 
+
+            /**
+             * show travel points in the screen (Bounds View)
+             */
+            /*LatLngBounds lb;
+            if(origin.latitude > dest.latitude) {
+                if(origin.longitude > dest.longitude) {
+                    lb = new LatLngBounds(dest, origin);
+                }else {
+                    lb = new LatLngBounds(new LatLng(dest.latitude, origin.longitude), new LatLng(origin.latitude, dest.longitude));
+                }
+            }else {
+                if(origin.longitude < dest.longitude) {
+                    lb = new LatLngBounds(origin, dest);
+                }else {
+                    lb = new LatLngBounds(new LatLng(origin.latitude, dest.longitude), new LatLng(dest.latitude, origin.longitude));
+                }
+            }
+            mMap.animateCamera(CameraUpdateFactory.newLatLngBounds(lb, 100));*/
+
             lineOptions = new PolylineOptions();
             points = new ArrayList<>();
             for (int i = 0; i < trackDetails.size(); i++) {
@@ -139,9 +167,11 @@ public class TrackingMapActivity extends FragmentActivity implements OnMapReadyC
         }
     }
 
-    private void loadData() {
+    private void loadData() throws UnsupportedEncodingException {
         trackDetails = new ArrayList<>();
-        String url = "https://api.navixy.com/v2/track/read?tracker_id=" + TrackerID + "&from=" + sdate + "&to=" + edate + "&hash=" + hashCode;
+        String usdate = URLEncoder.encode(sdate, "utf-8");
+        String uedate = URLEncoder.encode(edate, "utf-8");
+        String url = "https://api.navixy.com/v2/track/read?tracker_id=" + TrackerID + "&from=" + usdate + "&to=" + uedate + "&hash=" + hashCode;
         progressDialog = ProgressDialog.show(context, "",
                 "Loading...", true);
         JsonObjectRequest jsonRequest = new JsonObjectRequest
