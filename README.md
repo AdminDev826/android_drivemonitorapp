@@ -1,11 +1,18 @@
-# Geofencing step by step
+# Android NavixyMonitor
 
-I spent a lot of time [making geofencing work]("https://github.com/vhoen/AndroidGeofencing") with Android API level 19. Unfortunately, Google has deprecated LocationClient, replaced it by [LocationRequest]("https://developer.android.com/reference/com/google/android/gms/location/LocationRequest.html"). In the process the Geofencing documentation disappeared. With a bit of digging, I found a StackOverflow post with a working example.
+[![platform](https://img.shields.io/badge/platform-Android-green.svg)](https://www.android.com)
+[![API](https://img.shields.io/badge/API-15%2B-brightgreen.svg?style=flat)](https://android-arsenal.com/api?level=15s)
 
-Here is a working example on how to use the Geofencing API : 
+## Screenshots
+[<img src="screenshots/1.png" width="150" />]()
+[<img src="screenshots/2.png" width="150" />]()
+[<img src="screenshots/3.png" width="150" />]()
+[<img src="screenshots/4.png" width="150" />]()
+[<img src="screenshots/5.png" width="150" />]()
 
+## Main Features
 
-## [Creating a SimpleGeofence type](./src/me/hoen/geofence_21/SimpleGeofence.java)
+### [Creating a SimpleGeofence type](./src/me/hoen/geofence_21/SimpleGeofence.java)
 ```java
 public class SimpleGeofence {
     private final String id;
@@ -37,7 +44,7 @@ public class SimpleGeofence {
 }
 ```
 
-## [Creating a few SimpleGeofences](./src/me/hoen/geofence_21/SimpleGeofenceStore.java)
+### [Creating a few SimpleGeofences](./src/me/hoen/geofence_21/SimpleGeofenceStore.java)
 ```java
 public class SimpleGeofenceStore {
     private static final long GEOFENCE_EXPIRATION_IN_HOURS = 12;
@@ -64,7 +71,7 @@ public class SimpleGeofenceStore {
 }
 ```
 
-## [Displaying a map](./src/me/hoen/geofence_21/MapFragment.java)
+### [Displaying a map](./src/me/hoen/geofence_21/MapFragment.java)
 ```xml
 #!res/layout/fragment_map.xml
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -113,7 +120,7 @@ public class MapFragment extends Fragment {
 }
 ```
 
-## [Displaying SimpleGeofences on the map](./src/me/hoen/geofence_21/MapFragment.java)
+### [Displaying SimpleGeofences on the map](./src/me/hoen/geofence_21/MapFragment.java)
 ```java
 public class MapFragment extends Fragment {
     protected GoogleMap map;
@@ -158,7 +165,7 @@ public class MapFragment extends Fragment {
 }
 ```
 
-## [Creating a service fetching current location](./src/me/hoen/geofence_21/GeolocationService.java)
+### [Creating a service fetching current location](./src/me/hoen/geofence_21/GeolocationService.java)
 ```xml
 #!manifest.xml
 <service
@@ -297,7 +304,7 @@ public class GeolocationService extends Service implements ConnectionCallbacks,
 }
 ```
 
-## [Displaying and updating current location on the map](./src/me/hoen/geo[fence_21/MapFragment.java)
+### [Displaying and updating current location on the map](./src/me/hoen/geo[fence_21/MapFragment.java)
 ```java
 public class MapFragment extends Fragment {
     protected Marker myPositionMarker;
@@ -353,7 +360,7 @@ public class MapFragment extends Fragment {
 }
 ```
 
-## [Creating a notification to display when a geofence hits a transition](./src/me/hoen/geofence_21/GeofenceNotification.java)
+### [Creating a notification to display when a geofence hits a transition](./src/me/hoen/geofence_21/GeofenceNotification.java)
 
 ```java
 public class GeofenceNotification {
@@ -420,7 +427,7 @@ public class GeofenceNotification {
 }
 ```
 
-## [Adding geofences](./src/me/hoen/geofence_21/GeolocationService.java)
+### [Adding geofences](./src/me/hoen/geofence_21/GeolocationService.java)
 ```xml
 #!manifest.xml
 
@@ -533,7 +540,7 @@ public class GeolocationService extends Service implements ConnectionCallbacks,
 }
 ```
 
-## [Start Geolocation service](./src/me/hoen/geofence_21/MainActivity.java)
+### [Start Geolocation service](./src/me/hoen/geofence_21/MainActivity.java)
 ```Java
 public class MainActivity extends ActionBarActivity {
     public static String TAG = "lstech.aos.debug";
@@ -572,7 +579,7 @@ public class MainActivity extends ActionBarActivity {
 }
 ```
 
-## Watch the magic happens
+### Watch the magic happens
 ![](./res/drawable/geofence_01.png)
 ![](./res/drawable/geofence_notification_enter.png)
 ![](./res/drawable/geofence_notification_dwell.png)
@@ -582,3 +589,10 @@ public class MainActivity extends ActionBarActivity {
 - [Receiving Location Updates](http://developer.android.com/training/location/receive-location-updates.html)
 - [Sample on StackOverflow](http://stackoverflow.com/questions/27866649/geofence-android-pendingintent-doesnt-trigger-intentservice)
 - [Sample on GitHub](https://github.com/googlesamples/android-play-location/tree/master/Geofencing)
+
+### Report issue
+Did you encounter bugs? Report them [here](https://github.com/AdminDev826/android_navixymonitor/issues). The more relevant information you provide the easier and faster it can be resolved.
+
+## License
+
+Raffler is released under the Raffler LLC license. See [LICENSE]() for details.
