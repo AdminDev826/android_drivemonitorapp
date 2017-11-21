@@ -1,0 +1,2 @@
+alias: navixy
+password: smartdrive

@@ -14,13 +14,13 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Environment;
@@ -63,6 +63,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -81,6 +82,7 @@ import sos.GMailSender;
 import sos.Sos;
 import sos.SosInput;
 import util.AppSingleton;
+import util.PathUtil;
 import util.Utils;
 
 /**
@@ -112,6 +114,13 @@ public class UserInfo extends NavigationLiveo implements OnItemClickListener {
     int cPosition;
     Uri lastPictureUri;
     public static int SELECT_PICTURE_REQUEST_CODE = 69;
+
+    public static final int MULTIPLE_PERMISSIONS = 989;
+    String[] permissions= new String[]{
+            android.Manifest.permission.READ_EXTERNAL_STORAGE,
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE,
+            android.Manifest.permission.CAMERA,
+    };
 
     @Override
     public void onInt(Bundle savedInstanceState) {
@@ -410,8 +419,23 @@ public class UserInfo extends NavigationLiveo implements OnItemClickListener {
         databaseHandler.removeAllTime();
     }
 
-    public Uri openImageIntent() {
+    private  boolean checkPermissions() {
+        int result;
+        List<String> listPermissionsNeeded = new ArrayList<>();
+        for (String p:permissions) {
+            result = ContextCompat.checkSelfPermission(this,p);
+            if (result != PackageManager.PERMISSION_GRANTED) {
+                listPermissionsNeeded.add(p);
+            }
+        }
+        if (!listPermissionsNeeded.isEmpty()) {
+            ActivityCompat.requestPermissions(this, listPermissionsNeeded.toArray(new String[listPermissionsNeeded.size()]), MULTIPLE_PERMISSIONS );
+            return false;
+        }
+        return true;
+    }
 
+    public Uri openImageIntent() {
         // Determine Uri of camera image to save.
         final File root = new File(Environment.getExternalStorageDirectory() + File.separator + "MyDir" + File.separator);
         root.mkdirs();
@@ -419,32 +443,44 @@ public class UserInfo extends NavigationLiveo implements OnItemClickListener {
         final File sdImageMainDirectory = new File(root, fname);
         Uri outputFileUri = Uri.fromFile(sdImageMainDirectory);
 
-        // Camera.
-        final List<Intent> cameraIntents = new ArrayList<Intent>();
-        final Intent captureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
-        final PackageManager packageManager = getPackageManager();
-        final List<ResolveInfo> listCam = packageManager.queryIntentActivities(captureIntent, 0);
-        for (ResolveInfo res : listCam) {
-            final String packageName = res.activityInfo.packageName;
-            final Intent intent = new Intent(captureIntent);
-            intent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
-            intent.setPackage(packageName);
-            intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
-            cameraIntents.add(intent);
+        checkPermissions();
+        if (true){
+            // Camera.
+            final List<Intent> cameraIntents = new ArrayList<Intent>();
+            final Intent captureIntent = new Intent(android.provider.MediaStore.ACTION_IMAGE_CAPTURE);
+            final PackageManager packageManager = getPackageManager();
+            final List<ResolveInfo> listCam = packageManager.queryIntentActivities(captureIntent, 0);
+            for (ResolveInfo res : listCam) {
+                final String packageName = res.activityInfo.packageName;
+                final Intent intent = new Intent(captureIntent);
+                intent.setComponent(new ComponentName(res.activityInfo.packageName, res.activityInfo.name));
+                intent.setPackage(packageName);
+                intent.putExtra(MediaStore.EXTRA_OUTPUT, outputFileUri);
+                cameraIntents.add(intent);
+            }
+
+            // Filesystem.
+//            final Intent galleryIntent = new Intent();
+//            galleryIntent.setType("image/*");
+//            galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+//            galleryIntent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
+
+            Intent galleryIntent;
+
+            if (Build.VERSION.SDK_INT <= 19) {
+                galleryIntent = new Intent();
+                galleryIntent.setType("image/jpeg");
+                galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
+            } else {
+                galleryIntent = new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            }
+
+            // Chooser of filesystem options.
+            final Intent chooserIntent = Intent.createChooser(galleryIntent, "Select Source");
+            // Add the camera options.
+            chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, cameraIntents.toArray(new Parcelable[]{}));
+            startActivityForResult(chooserIntent, SELECT_PICTURE_REQUEST_CODE);
         }
-
-        // Filesystem.
-        final Intent galleryIntent = new Intent();
-        galleryIntent.setType("image/*");
-        galleryIntent.setAction(Intent.ACTION_GET_CONTENT);
-        galleryIntent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
-
-        // Chooser of filesystem options.
-        final Intent chooserIntent = Intent.createChooser(galleryIntent, "Select Source");
-        // Add the camera options.
-        chooserIntent.putExtra(Intent.EXTRA_INITIAL_INTENTS, cameraIntents.toArray(new Parcelable[]{}));
-
-        startActivityForResult(chooserIntent, SELECT_PICTURE_REQUEST_CODE);
         return outputFileUri;
     }
 
@@ -465,7 +501,7 @@ public class UserInfo extends NavigationLiveo implements OnItemClickListener {
 
     public Uri processPhotoResponseWith(Intent data, Uri outputFileUri, String defaultName) {
         final boolean isCamera;
-        if (data == null) {
+        if (data == null || data.getData() == null) {
             isCamera = true;
         } else {
             final String action = data.getAction();
@@ -520,17 +556,25 @@ public class UserInfo extends NavigationLiveo implements OnItemClickListener {
     }
 
     private String getRealPathFromURI(Uri contentURI) {
-        String result;
-        Cursor cursor = getContentResolver().query(contentURI, null, null, null, null);
+        String filePath = null;
+        try {
+            filePath= PathUtil.getPath(context,contentURI);
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+        }
+        return filePath;
+        /*String result;
+        String[] projection = { MediaStore.Images.Media.DATA };
+        Cursor cursor = getContentResolver().query(contentURI, projection, null, null, null);
         if (cursor == null) { // Source is Dropbox or other similar local file path
             result = contentURI.getPath();
         } else {
+            int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
             cursor.moveToFirst();
-            int idx = cursor.getColumnIndex(MediaStore.Images.ImageColumns.DATA);
-            result = cursor.getString(idx);
+            result = cursor.getString(column_index); // returns null
             cursor.close();
         }
-        return result;
+        return result;*/
     }
 
     @Override
