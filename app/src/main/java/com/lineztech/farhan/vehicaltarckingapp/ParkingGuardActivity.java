@@ -280,62 +280,64 @@ public class ParkingGuardActivity extends Activity {
     }
 
     private void EngineGetStart() {
-        progressDialog = ProgressDialog.show(context, "",
-                "Loading...", true);
-        jArrOutPutsEngineON.clear();
-        connectionStatusURL = "https://api.navixy.com/v2/tracker/get_state?tracker_id=" + alarm_id + "&hash=" + hashCode;
+        if(!((Activity) context).isFinishing()){
+            progressDialog = ProgressDialog.show(context, "",
+                    "Loading...", true);
+            jArrOutPutsEngineON.clear();
+            connectionStatusURL = "https://api.navixy.com/v2/tracker/get_state?tracker_id=" + alarm_id + "&hash=" + hashCode;
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest
-                (Request.Method.GET, connectionStatusURL, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            String status = response.getString("success");
-                            if (status.equals("true")) {
-                                JSONObject state = response.getJSONObject("state");
-                                JSONArray jarray = state.getJSONArray("outputs");
-                                for (int i = 0; i < jarray.length(); i++) {
-                                    jArrOutPutsEngineON.add((Boolean) jarray.get(i));
+            JsonObjectRequest jsonRequest = new JsonObjectRequest
+                    (Request.Method.GET, connectionStatusURL, null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                String status = response.getString("success");
+                                if (status.equals("true")) {
+                                    JSONObject state = response.getJSONObject("state");
+                                    JSONArray jarray = state.getJSONArray("outputs");
+                                    for (int i = 0; i < jarray.length(); i++) {
+                                        jArrOutPutsEngineON.add((Boolean) jarray.get(i));
+                                    }
+                                    EngineApplyStart();
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(context, "Fail !", Toast.LENGTH_SHORT).show();
+                                    closeDefense();
                                 }
-                                EngineApplyStart();
-                            } else {
+                            } catch (JSONException e) {
                                 progressDialog.dismiss();
-                                Toast.makeText(context, "Fail !", Toast.LENGTH_SHORT).show();
+                                e.printStackTrace();
+                                Toast.makeText(context, "Fail ! \n" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 closeDefense();
                             }
-                        } catch (JSONException e) {
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
                             progressDialog.dismiss();
-                            e.printStackTrace();
-                            Toast.makeText(context, "Fail ! \n" + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "Server Error ! \n" + error.getMessage(), Toast.LENGTH_SHORT).show();
                             closeDefense();
                         }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                        progressDialog.dismiss();
-//                        Toast.makeText(context, "Server Error ! \n" + error.getMessage(), Toast.LENGTH_SHORT).show();
-                        closeDefense();
-                    }
-                });
-        jsonRequest.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 20000;
-            }
+                    });
+            jsonRequest.setRetryPolicy(new RetryPolicy() {
+                @Override
+                public int getCurrentTimeout() {
+                    return 20000;
+                }
 
-            @Override
-            public int getCurrentRetryCount() {
-                return 2000;
-            }
+                @Override
+                public int getCurrentRetryCount() {
+                    return 2000;
+                }
 
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
+                @Override
+                public void retry(VolleyError error) throws VolleyError {
 
-            }
-        });
-        AppSingleton.getInstance(context).addToRequestQueue(jsonRequest, "smart_defense");
+                }
+            });
+            AppSingleton.getInstance(context).addToRequestQueue(jsonRequest, "smart_defense");
+        }
     }
 
     private void EngineApplyStart() {
@@ -425,61 +427,63 @@ public class ParkingGuardActivity extends Activity {
     }
 
     private void EngineGetStop() {
-        progressDialog = ProgressDialog.show(context, "",
-                "Loading...", true);
-        connectionStatusURL = "https://api.navixy.com/v2/tracker/get_state?tracker_id=" + alarm_id + "&hash=" + hashCode;
+        if(!((Activity) context).isFinishing()){
+            progressDialog = ProgressDialog.show(context, "",
+                    "Loading...", true);
+            connectionStatusURL = "https://api.navixy.com/v2/tracker/get_state?tracker_id=" + alarm_id + "&hash=" + hashCode;
 
-        JsonObjectRequest jsonRequest = new JsonObjectRequest
-                (Request.Method.GET, connectionStatusURL, null, new Response.Listener<JSONObject>() {
-                    @Override
-                    public void onResponse(JSONObject response) {
-                        try {
-                            String status = response.getString("success");
-                            if (status.equals("true")) {
-                                JSONObject state = response.getJSONObject("state");
-                                JSONArray jarray = state.getJSONArray("outputs");
-                                for (int i = 0; i < jarray.length(); i++) {
-                                    jArrOutPuts.add((Boolean) jarray.get(i));
+            JsonObjectRequest jsonRequest = new JsonObjectRequest
+                    (Request.Method.GET, connectionStatusURL, null, new Response.Listener<JSONObject>() {
+                        @Override
+                        public void onResponse(JSONObject response) {
+                            try {
+                                String status = response.getString("success");
+                                if (status.equals("true")) {
+                                    JSONObject state = response.getJSONObject("state");
+                                    JSONArray jarray = state.getJSONArray("outputs");
+                                    for (int i = 0; i < jarray.length(); i++) {
+                                        jArrOutPuts.add((Boolean) jarray.get(i));
+                                    }
+                                    EngineApplyStop();
+                                } else {
+                                    progressDialog.dismiss();
+                                    Toast.makeText(context, "Fail !", Toast.LENGTH_SHORT).show();
+                                    closeDefense();
                                 }
-                                EngineApplyStop();
-                            } else {
+                            } catch (JSONException e) {
                                 progressDialog.dismiss();
-                                Toast.makeText(context, "Fail !", Toast.LENGTH_SHORT).show();
+                                e.printStackTrace();
+                                Toast.makeText(context, "Fail ! \n" + e.getMessage(), Toast.LENGTH_SHORT).show();
                                 closeDefense();
                             }
-                        } catch (JSONException e) {
+                        }
+                    }, new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            error.printStackTrace();
                             progressDialog.dismiss();
-                            e.printStackTrace();
-                            Toast.makeText(context, "Fail ! \n" + e.getMessage(), Toast.LENGTH_SHORT).show();
+//                        Toast.makeText(context, "Server Error ! \n" + error.getMessage(), Toast.LENGTH_SHORT).show();
                             closeDefense();
                         }
-                    }
-                }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        error.printStackTrace();
-                        progressDialog.dismiss();
-//                        Toast.makeText(context, "Server Error ! \n" + error.getMessage(), Toast.LENGTH_SHORT).show();
-                        closeDefense();
-                    }
-                });
-        jsonRequest.setRetryPolicy(new RetryPolicy() {
-            @Override
-            public int getCurrentTimeout() {
-                return 20000;
-            }
+                    });
+            jsonRequest.setRetryPolicy(new RetryPolicy() {
+                @Override
+                public int getCurrentTimeout() {
+                    return 20000;
+                }
 
-            @Override
-            public int getCurrentRetryCount() {
-                return 2000;
-            }
+                @Override
+                public int getCurrentRetryCount() {
+                    return 2000;
+                }
 
-            @Override
-            public void retry(VolleyError error) throws VolleyError {
+                @Override
+                public void retry(VolleyError error) throws VolleyError {
 
-            }
-        });
-        AppSingleton.getInstance(context).addToRequestQueue(jsonRequest, "smart_defense");
+                }
+            });
+            AppSingleton.getInstance(context).addToRequestQueue(jsonRequest, "smart_defense");
+        }
     }
 
     private void EngineApplyStop() {

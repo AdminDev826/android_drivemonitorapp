@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:id="@+id/idllDays"
+        android:padding="5dp"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal">
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/idtvToday"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:background="@drawable/pressed_state_pmy_score"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:textColor="#fff"-->
+            <!--android:layout_margin="1dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Today" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/idtvYesterday"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textColor="#fff"-->
+            <!--android:layout_margin="1dp"-->
+            <!--android:background="@drawable/pressed_state_pmy_score"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:textSize="13dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Yesterday" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/idtvWeek"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_margin="1dp"-->
+            <!--android:textColor="#fff"-->
+            <!--android:background="@drawable/pressed_state_pmy_score"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Week" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/idtvMonth"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textColor="#fff"-->
+            <!--android:background="@drawable/pressed_state_pmy_score"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_margin="1dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Month" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/idtvYear"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:textColor="#fff"-->
+            <!--android:layout_margin="1dp"-->
+            <!--android:background="@drawable/pressed_state_pmy_score"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="This Year" />-->
+
+
+
+
+
+        <Spinner
+            android:id="@+id/idspSelectTimeDuration"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:textColor="#fff"
+            android:entries="@array/array_time_duration"
+            android:layout_margin="1dp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+             />
+
+
+
+
+    </LinearLayout>
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/idlvTrackingHistory"
+        android:layout_gravity="center_horizontal" />
+</LinearLayout>

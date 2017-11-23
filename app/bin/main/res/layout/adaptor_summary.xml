@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f0f0f0"
+    android:orientation="vertical">
+
+
+    <LinearLayout
+        android:id="@+id/idllInner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+
+        android:divider="@drawable/vertical_divider_1"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <TextView
+            android:id="@+id/idtvName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.4"
+            android:textSize="@dimen/action_text_size"
+            android:padding="5dp"
+            android:textColor="#6c6c6c" />
+
+        <TextView
+            android:id="@+id/idtvRating"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:textSize="@dimen/action_text_size"
+            android:padding="5dp"
+            android:textColor="#6c6c6c" />
+
+        <TextView
+            android:id="@+id/idtvMileage"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/action_text_size"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:textColor="#6c6c6c" />
+        <TextView
+            android:id="@+id/idtvPenaltiesNumber"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/action_text_size"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:textColor="#6c6c6c" />
+        <TextView
+            android:id="@+id/idtvAvgPenailtiez"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/action_text_size"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:textColor="#6c6c6c" />
+
+
+    </LinearLayout>
+
+
+</LinearLayout>

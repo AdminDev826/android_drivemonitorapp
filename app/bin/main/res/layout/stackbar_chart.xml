@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+   android:padding="5dp"
+    android:orientation="vertical"
+    tools:context="eco_driving.StackBarChartt">
+
+    <LinearLayout
+        android:id="@+id/idllTotalPenalty"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/borderlayout_speeding"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_chevron_right_24dp"
+            android:textColor="#fff" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Total Penalty"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+
+
+
+    <eco_driving.StackedBarChart
+        android:id="@+id/idStackchart"
+        android:layout_marginTop="5dp"
+        android:layout_height="150dp"
+        android:layout_width="match_parent"/>
+
+    <LinearLayout
+        android:id="@+id/idllRating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/borderlayout_speeding"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_chevron_right_24dp"
+            android:textColor="#fff" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Rating"
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart"
+        android:layout_width="match_parent"
+        android:layout_marginTop="5dp"
+        android:layout_height="150dp" />
+
+
+    <LinearLayout
+        android:id="@+id/idllSummary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/borderlayout_speeding"
+        android:orientation="horizontal"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:background="@drawable/ic_chevron_right_24dp"
+            android:textColor="#fff" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Summary "
+            android:textColor="#fff" />
+
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:id="@+id/idllInner"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:background="#e0e0e3"
+        android:divider="@drawable/vertical_divider_1"
+        android:orientation="horizontal"
+        android:showDividers="middle">
+
+        <TextView
+            android:id="@+id/idtvDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1.4"
+            android:text="Name"
+            android:gravity="center"
+            android:textSize="@dimen/action_text_size"
+            android:padding="5dp"
+            android:textColor="#6c6c6c" />
+
+        <TextView
+            android:id="@+id/idtvLayout"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Rating"
+            android:gravity="center"
+            android:textSize="@dimen/action_text_size"
+            android:padding="5dp"
+            android:textColor="#6c6c6c" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/action_text_size"
+            android:layout_weight="1"
+            android:padding="5dp"
+            android:gravity="center"
+            android:singleLine="true"
+            android:text="Mileage,km"
+            android:textColor="#6c6c6c" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/action_text_size"
+            android:layout_weight="1"
+            android:text="Penalties Number"
+            android:singleLine="true"
+            android:gravity="center"
+            android:padding="5dp"
+            android:textColor="#6c6c6c" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textSize="@dimen/action_text_size"
+            android:layout_weight="1"
+            android:text="Average Penalties"
+            android:singleLine="true"
+            android:padding="5dp"
+            android:textColor="#6c6c6c" />
+
+
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/idlvSummary"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </ListView>
+
+
+
+</LinearLayout>

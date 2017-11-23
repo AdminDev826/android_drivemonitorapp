@@ -1,5 +1,6 @@
 package assing_task;
 
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationManager;
@@ -171,6 +172,7 @@ public class RSSPullService extends Service {
         AppSingleton.getInstance(context).addToRequestQueue(jsonRequest, "smartdrive");
     }
 
+    @SuppressLint("SimpleDateFormat")
     private void updateUI() {
 //        testDefense();
         SimpleDateFormat displayFormat = new SimpleDateFormat("HH:mm");
@@ -229,117 +231,120 @@ public class RSSPullService extends Service {
                     notif.notify(R.mipmap.ic_launcher_noti, notification);
                 }
 
-                DatabaseHandler db = new DatabaseHandler(context);
-                String connectionStatus = db.getStatus(tID);
-//                Log.e("conn sts", " " + connectionStatus);
-                DateFormat format2 = new SimpleDateFormat("EEEE");
-                String finalDay = format2.format(new Date());
-                Hours hours = db.getSETime(tID, finalDay);
-                db.close();
+                Hours hours = null;
+                String connectionStatus = null;
 
-                if (arrTrackingHistory.get(0).getEvent().equals("crash_alarm")) {
-                    if (Utils.getPreferences("ecalling_" + tID, context).equals("ON")) {
-                        Intent intent = new Intent(context, EcallingActivity.class);
-                        intent.putExtra("tracker_id", tID);
-                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        startActivity(intent);
-                    } else {
-                        Toast.makeText(context, "E-calling is disabled", Toast.LENGTH_SHORT).show();
-                    }
-                } else if (arrTrackingHistory.get(0).getEvent().equals("sos")) {
-                    String antiHijacking = Utils.getPreferences("anti-hijacking_" + tID, context);
-                    if (antiHijacking.equals("ON")) {
-                        startService(new Intent(context, AntiHijackingCountDownTimer.class));
-                        openActiveHour(tID);
-                    } else {
-                        Toast.makeText(context, "Anti Hi-jacking is disabled", Toast.LENGTH_SHORT).show();
-                    }
-                } else if (!playingAlarm.equals("YES") && connectionStatus.equals("active")) {
-//            if (connectionStatus.equals("active")) {
-                    if (checkPowerCut(message) && batteryAlarm.equals("ON")) {
-                        Utils.savePreferences("alarm_playing", "YES", context);
-                        String vName = "External power cut on " + deviceName + " at " + road_name;
-                        Intent intent1 = new Intent(context, SmartDefenseActivity.class);
-                        intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent1.putExtra("vName", vName);
-                        intent1.putExtra("alarm_id", tID);
-                        startActivity(intent1);
-                    } else if (state.equals(" Parking start") || state.contains("OFF")) {
-                        Utils.savePreferences("alarm_playing", "YES", context);
-                        Intent intent1 = new Intent(context, ParkingGuardActivity.class);
-                        intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent1.putExtra("alarm_id", tID);
-                        startActivity(intent1);
-                    } else if (state.contains(" ON") && park_guard.equals("ON")) {
-                        Utils.savePreferences("alarm_playing", "YES", context);
-                        Intent intent1 = new Intent(context, ParkingGuardActivity.class);
-                        intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                        intent1.putExtra("alarm_id", tID);
-                        intent1.putExtra("Ignition", "Ignition Detected, Enable Engine?");
-                        startActivity(intent1);
-                    } else {
-                        try {
-                            String sTime = hours.getStart_time();
-                            String eTime = hours.getEnd_time();
-                            if (sTime != null) {
-                                if (sTime.contains("a.m.")) {
-                                    sTime = sTime.replace("a.m.", "AM");
-                                } else if (sTime.contains("p.m.")) {
-                                    sTime = sTime.replace("p.m.", "PM");
-                                }
-                                Date date = null;
-                                try {
-                                    date = parseFormat.parse(sTime);
-                                    isInTest.setTimeStart(displayFormat.format(date) + ":00");
-                                } catch (ParseException e) {
-                                    e.printStackTrace();
-                                }
-                            }
+                try{
+                    DatabaseHandler db = new DatabaseHandler(context);
+                    connectionStatus = db.getStatus(tID);
+                    @SuppressLint("SimpleDateFormat") DateFormat format2;
+                    format2 = new SimpleDateFormat("EEEE");
+                    String finalDay = format2.format(new Date());
+                    hours = db.getSETime(tID, finalDay);
+                    db.close();
 
-                            if (eTime != null) {
-                                if (eTime.contains("a.m.")) {
-                                    eTime = eTime.replace("a.m.", "AM");
-                                } else if (eTime.contains("p.m.")) {
-                                    eTime = eTime.replace("p.m.", "PM");
+
+                    if (arrTrackingHistory.get(0).getEvent().equals("crash_alarm")) {
+                        if (Utils.getPreferences("ecalling_" + tID, context).equals("ON")) {
+                            Intent intent = new Intent(context, EcallingActivity.class);
+                            intent.putExtra("tracker_id", tID);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            startActivity(intent);
+                        } else {
+                            Toast.makeText(context, "E-calling is disabled", Toast.LENGTH_SHORT).show();
+                        }
+                    } else if (arrTrackingHistory.get(0).getEvent().equals("sos")) {
+                        String antiHijacking = Utils.getPreferences("anti-hijacking_" + tID, context);
+                        if (antiHijacking.equals("ON")) {
+                            startService(new Intent(context, AntiHijackingCountDownTimer.class));
+                            openActiveHour(tID);
+                        } else {
+                            Toast.makeText(context, "Anti Hi-jacking is disabled", Toast.LENGTH_SHORT).show();
+                        }
+                    } else if (!playingAlarm.equals("YES") && connectionStatus.equals("active")) {
+                        if (checkPowerCut(message) && batteryAlarm.equals("ON")) {
+                            Utils.savePreferences("alarm_playing", "YES", context);
+                            String vName = "External power cut on " + deviceName + " at " + road_name;
+                            Intent intent1 = new Intent(context, SmartDefenseActivity.class);
+                            intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent1.putExtra("vName", vName);
+                            intent1.putExtra("alarm_id", tID);
+                            startActivity(intent1);
+                        } else if (state.equals(" Parking start") || state.contains("OFF")) {
+                            Utils.savePreferences("alarm_playing", "YES", context);
+                            Intent intent1 = new Intent(context, ParkingGuardActivity.class);
+                            intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent1.putExtra("alarm_id", tID);
+                            startActivity(intent1);
+                        } else if (state.contains(" ON") && park_guard.equals("ON")) {
+                            Utils.savePreferences("alarm_playing", "YES", context);
+                            Intent intent1 = new Intent(context, ParkingGuardActivity.class);
+                            intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                            intent1.putExtra("alarm_id", tID);
+                            intent1.putExtra("Ignition", "Ignition Detected, Enable Engine?");
+                            startActivity(intent1);
+                        } else {
+                            try {
+                                String sTime = hours.getStart_time();
+                                String eTime = hours.getEnd_time();
+                                if (sTime != null) {
+                                    if (sTime.contains("a.m.")) {
+                                        sTime = sTime.replace("a.m.", "AM");
+                                    } else if (sTime.contains("p.m.")) {
+                                        sTime = sTime.replace("p.m.", "PM");
+                                    }
+                                    Date date = null;
+                                    try {
+                                        date = parseFormat.parse(sTime);
+                                        isInTest.setTimeStart(displayFormat.format(date) + ":00");
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
-                                Date date = null;
-                                try {
-                                    date = parseFormat.parse(eTime);
-                                    isInTest.setTimeEnd(displayFormat.format(date) + ":00");
-                                } catch (ParseException e) {
-                                    e.printStackTrace();
+
+                                if (eTime != null) {
+                                    if (eTime.contains("a.m.")) {
+                                        eTime = eTime.replace("a.m.", "AM");
+                                    } else if (eTime.contains("p.m.")) {
+                                        eTime = eTime.replace("p.m.", "PM");
+                                    }
+                                    Date date = null;
+                                    try {
+                                        date = parseFormat.parse(eTime);
+                                        isInTest.setTimeEnd(displayFormat.format(date) + ":00");
+                                    } catch (ParseException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
+                                isTimeIn = isInTest.isNowInPeriod();
+                                if (isTimeIn == false) {
+                                    String vName;
+                                    if (state.equals(" Parking end") && strIDAlarm_parking.equals("ON")) {
+                                        Utils.savePreferences("alarm_playing", "YES", context);
+                                        vName = "Parking end Detected on " + deviceName + " at " + road_name;
+                                        Intent intent1 = new Intent(context, SmartDefenseActivity.class);
+                                        intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        intent1.putExtra("vName", vName);
+                                        intent1.putExtra("alarm_id", tID);
+                                        startActivity(intent1);
+                                    } else if (state.contains(" ON") && strIDAlarm_ignition.equals("ON")) {
+                                        Utils.savePreferences("alarm_playing", "YES", context);
+                                        vName = "Ignition Detected on " + deviceName + " at " + road_name;
+                                        Intent intent1 = new Intent(getBaseContext(), SmartDefenseActivity.class);
+                                        intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                        intent1.putExtra("vName", vName);
+                                        intent1.putExtra("alarm_id", tID);
+                                        startActivity(intent1);
+                                    }
+                                }
+                            } catch (Exception e) {
+                                Log.e("eee", "inside catch");
+                                e.printStackTrace();
                             }
-                            isTimeIn = isInTest.isNowInPeriod();
-                            if (isTimeIn == false) {
-                                String vName;
-                                if (state.equals(" Parking end") && strIDAlarm_parking.equals("ON")) {
-                                    Utils.savePreferences("alarm_playing", "YES", context);
-                                    vName = "Parking end Detected on " + deviceName + " at " + road_name;
-                                    Intent intent1 = new Intent(context, SmartDefenseActivity.class);
-                                    intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    intent1.putExtra("vName", vName);
-                                    intent1.putExtra("alarm_id", tID);
-                                    startActivity(intent1);
-                                } else if (state.contains(" ON") && strIDAlarm_ignition.equals("ON")) {
-                                    Utils.savePreferences("alarm_playing", "YES", context);
-                                    vName = "Ignition Detected on " + deviceName + " at " + road_name;
-                                    Intent intent1 = new Intent(getBaseContext(), SmartDefenseActivity.class);
-                                    intent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                    intent1.putExtra("vName", vName);
-                                    intent1.putExtra("alarm_id", tID);
-                                    startActivity(intent1);
-//                            Intent i = new Intent("smart_defense");
-//                            i.putExtra("vName", vName);
-//                            i.putExtra("alarm_id", tID);
-//                            sendBroadcast(i);
-                                }
-                            }
-                        } catch (Exception e) {
-                            Log.e("eee", "inside catch");
-                            e.printStackTrace();
                         }
                     }
+                }catch (Exception e) {
+                    e.printStackTrace();
                 }
                 prev_status = state;
             }

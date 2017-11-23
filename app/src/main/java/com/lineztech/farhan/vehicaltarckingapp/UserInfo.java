@@ -85,9 +85,6 @@ import util.AppSingleton;
 import util.PathUtil;
 import util.Utils;
 
-/**
- * Created by Farhan on 7/25/2016.
- */
 public class UserInfo extends NavigationLiveo implements OnItemClickListener {
 
     Context context;

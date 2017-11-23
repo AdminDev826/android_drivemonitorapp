@@ -1,0 +1,204 @@
+<resources>
+    <string name="app_name">SmartMonitor</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_sos">SOS</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="title_activity_main">Push Notifications</string>
+    <string name="error_config">Please set the %1$s constant and recompile the app.</string>
+    <string name="already_registered">Device is already registered on server.</string>
+    <string name="gcm_registered">From GCM: device successfully registered!</string>
+    <string name="gcm_unregistered">From GCM: device successfully unregistered!</string>
+    <string name="gcm_message">From GCM: you got message!</string>
+    <string name="gcm_error">From GCM: error (%1$s).</string>
+    <string name="gcm_recoverable_error">From GCM: recoverable error (%1$s).</string>
+    <string name="gcm_deleted">From GCM: server deleted %1$d pending messages!</string>
+    <string name="server_registering">Trying (attempt %1$d/%2$d) to register device on Demo Server.</string>
+    <string name="server_registered">From Demo Server: successfully added device!</string>
+    <string name="server_unregistered">From Demo Server: successfully removed device!</string>
+    <string name="server_register_error">Could not register device on Demo Server after %1$d attempts.</string>
+    <string name="server_unregister_error">Could not unregister device on Demo Server (%1$s).</string>
+    <string name="options_register">Register</string>
+    <string name="options_unregister">Unregister</string>
+    <string name="options_clear">Clear</string>
+    <string name="options_exit">Exit</string>
+
+    <string name="selected_time">The time you picked will be shown here.</string>
+    <string name="selected_date">The date you picked will be shown here.</string>
+    <string name="pick_time">Pick Time</string>
+    <string name="pick_date">Pick Date</string>
+    <string name="mode_24_hours">Use 24 hour mode</string>
+    <string name="mode_dark_time">Use dark theme</string>
+    <string name="mode_dark_date">Use dark theme</string>
+    <string name="mode_custom_accent">Use custom accent</string>
+    <string name="vibrate_time">Vibrate on touch</string>
+    <string name="vibrate_date">Vibrate on touch</string>
+    <string name="dismiss_time">Dismiss on pause (eg: orientation change)</string>
+    <string name="dismiss_date">Dismiss on pause (eg: orientation change)</string>
+    <string name="title_time">Show a title</string>
+    <string name="title_date">Show a title</string>
+    <string name="show_year_first">Show the year picker first</string>
+    <string name="enable_seconds">Show seconds picker</string>
+    <string name="enable_minutes">Show minutes picker</string>
+    <string name="limit_times">Limit selectable times</string>
+    <string name="limit_dates">Limit selectable dates</string>
+    <string name="disable_dates">Disable specific dates</string>
+    <string name="highlight_dates">Highlight certain dates</string>
+
+    <string name="geofence_enter">Now entering %1$s</string>
+    <string name="geofence_dwell">Dwelling in %1$s</string>
+    <string name="geofence_exit">Now exiting %1$s</string>
+    <string name="events">Events</string>
+    <string name="map">Map</string>
+    <string name="transition">Transition</string>
+    <string name="geofence_not_available">Geofence service is not available now</string>
+    <string name="geofence_too_many_geofences">App registered too many geofences</string>
+    <string name="geofence_too_many_pending_intents">Too many PendingIntents provided</string>
+    <string name="unknown_geofence_error">Unknown error</string>
+    <string name="geofences_added">Geofences added</string>
+    <string name="geofences_removed">Geofences removed</string>
+
+
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Login</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_home">Map</string>
+
+
+    <string-array name="array_fuel_type">
+        <item>Select fuel type </item>
+        <item>petrol </item>
+        <item>diesel </item>
+        <item>gas </item>
+    </string-array>
+
+
+    <string-array name="array_type">
+
+        <item>Select Type </item>
+        <item>car </item>
+        <item>truck </item>
+        <item>bus </item>
+        <item>special </item>
+    </string-array>
+
+    <string-array name="vehicle_type">
+
+        <item></item>
+        <item>car </item>
+        <item>truck </item>
+        <item>bus </item>
+        <item>special </item>
+    </string-array>
+
+    <string-array name="planets_array">
+        <item>Favorite color ?</item>
+        <item>Favorite car ?</item>
+        <item>Favorite singer ?</item>
+        <item>Favorite season ?</item>
+        <item>Favorite flower ?</item>
+    </string-array>
+
+    <string-array name="array_subtype_car">
+        <item>Select Subtype </item>
+        <item>sedan </item>
+        <item>universal </item>
+        <item>hatchback </item>
+        <item>liftback </item>
+        <item>limousine </item>
+        <item>pickup </item>
+        <item>minivan </item>
+        <item>coupe </item>
+        <item>coupe4d </item>
+        <item>muscle </item>
+        <item>convertible </item>
+        <item>phaeton </item>
+        <item>lando </item>
+        <item>crossover </item>
+        <item>roadster </item>
+        <item>suv </item>
+    </string-array>
+
+    <string-array name="array_subtype_truck">
+
+        <item>Select Subtype </item>
+        <item>tipper </item>
+        <item>board </item>
+        <item>covered </item>
+        <item>awning </item>
+        <item>mixer </item>
+        <item>tanker </item>
+        <item>refrigerator </item>
+        <item>transporter </item>
+        <item>container </item>
+        <item>tractor </item>
+    </string-array>
+
+    <string-array name="array_type_bus">
+
+        <item>Select Subtype </item>
+        <item>city </item>
+        <item>shuttle </item>
+        <item>platform </item>
+        <item>school </item>
+        <item>intercity </item>
+        <item>sightseeing </item>
+    </string-array>
+
+    <string-array name="array_type_special">
+
+        <item>Select Subtype </item>
+        <item>mobile_crane </item>
+        <item>racing </item>
+        <item>buggy </item>
+        <item>ambulance </item>
+        <item>firefighter </item>
+        <item>hearse </item>
+        <item>shop </item>
+        <item>harvester </item>
+        <item>snowplow </item>
+        <item>tractor </item>
+        <item>grader </item>
+        <item>excavator </item>
+        <item>bulldozer </item>
+        <item>armored </item>
+        <item>amphibian </item>
+    </string-array>
+
+
+    <string-array name="array_dayes">
+
+        <item>Select Day</item>
+        <item>Monday </item>
+        <item>Tuesday </item>
+        <item>Wednesday </item>
+        <item>Thursday </item>
+        <item>Friday </item>
+        <item>Saturday </item>
+        <item>Sunday </item>
+    </string-array>
+
+
+    <string-array name="array_time_duration">
+        <item>Today</item>
+        <item>Yesterday </item>
+        <item>Last week </item>
+        <item>Last month </item>
+        <item>Custom</item>
+    </string-array>
+
+
+    <string name="desc_list_item_icon">Item Icon</string>
+
+
+</resources>

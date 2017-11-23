@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.lineztech.farhan.vehicaltarckingapp">
+
+    <!-- GCM connects to Internet Services. -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- GCM requires a Google account. -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <permission
+        android:name="com.lineztech.farhan.vehicaltarckingapp.permission.C2D_MESSAGE"
+        android:protectionLevel="normal" />
+
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission
+        android:name="com.google.android.c2dm.permission.RECEIVE"
+        android:protectionLevel="normal" />
+
+    <!-- Network State Permissions to detect Internet status -->
+    <uses-permission
+        android:name="android.permission.ACCESS_NETWORK_STATE"
+        android:protectionLevel="normal" />
+
+    <!-- Permission to vibrate -->
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <!-- Required to show current location -->
+    <uses-permission
+        android:name="android.permission.ACCESS_COARSE_LOCATION"
+        android:protectionLevel="normal" />
+    <uses-permission
+        android:name="android.permission.ACCESS_FINE_LOCATION"
+        android:protectionLevel="normal" />
+    <uses-permission
+        android:name="com.google.android.providers.gsf.permission.READ_GSERVICES"
+        android:protectionLevel="normal" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS"/>
+
+    <application
+        android:name="android.support.multidex.MultiDexApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait"
+            android:theme="@style/nLiveoDrawer">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".UserInfo"
+            android:configChanges="orientation|keyboard|screenSize|screenLayout"
+            android:screenOrientation="portrait"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name=".StartingActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="maps.MapsMain"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="tracking_history.TrackingHistory"
+            android:screenOrientation="portrait"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="eco_driving.PenallitySettings"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="assing_task.AssignTaskMain"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="sos.SosInput"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="geofence_21.MapGeoFence"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="dashboard.MapsMain"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="routine_maintinance.RoutineMaintinaceMain"
+            android:screenOrientation="portrait"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="eco_driving.EcoDriving"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="active_hour.ActiveHour"
+            android:screenOrientation="portrait"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="tracking_history.MapsActivity"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="eco_driving.StackBarChartt"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="active_hour.AssignActiveHours"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="assing_task.MapAssign"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="add_assets.AddNewAsset"
+            android:screenOrientation="portrait"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="obd.OBDMain"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name="routine_maintinance.MaintenanceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name=".SmartDefenseActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/nLiveoDrawer" />
+        <activity
+            android:name=".ParkingGuardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/nLiveoDrawer" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCkTPXDvwMC90J9ZsJF4_FKhtYm253c7jk" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <service
+            android:name="assing_task.RSSPullService"
+            android:exported="false" />
+        <service
+            android:name="assing_task.SyncSmartDefenceData"
+            android:exported="false" />
+
+        <receiver android:name="util.BootCompleteReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="1bed234a4febb8a323b08861ff23fb956673b494" />
+
+        <activity android:name=".EcallingActivity" />
+        <activity android:name="tracking_history.TrackingMapActivity" />
+        <service android:name="assing_task.AntiHijackingCountDownTimer" />
+    </application>
+
+</manifest>
