@@ -190,6 +190,7 @@ public class RSSPullService extends Service {
                 String batteryAlarm = Utils.getPreferences("battery_alarm_" + tID, context);
                 String message = arrTrackingHistory.get(0).getMessage();
                 String address = arrTrackingHistory.get(0).getAddress();
+                String strTime = arrTrackingHistory.get(0).getTime();
                 Utils.savePreferences("saved_time", current_time, context);
 
                 String[] parts = message.split(":");
@@ -210,9 +211,8 @@ public class RSSPullService extends Service {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
                         builder.setSmallIcon(R.mipmap.ic_launcher_noti)
                                 .setContentTitle(context.getString(R.string.app_name))
-                                .setContentText("" + arrTrackingHistory.get(0).getMessage() + ",\n" + arrTrackingHistory.get(0).getTime())
-                                .setStyle(new NotificationCompat.BigTextStyle().bigText("" + arrTrackingHistory.get(0).getMessage() + ",\n" + arrTrackingHistory.get(0).getTime()))
-                                .setContentText("" + arrTrackingHistory.get(0).getMessage() + ",\n" + arrTrackingHistory.get(0).getTime())
+                                .setContentText("" + message + ",\n" + strTime)
+                                .setStyle(new NotificationCompat.BigTextStyle().bigText("" + message + ",\n" + strTime))
 //                            .setDefaults(Notification.DEFAULT_SOUND)
                                 .setContentIntent(pending);
                     }
@@ -254,7 +254,13 @@ public class RSSPullService extends Service {
                             Toast.makeText(context, "E-calling is disabled", Toast.LENGTH_SHORT).show();
                         }
                     } else if (arrTrackingHistory.get(0).getEvent().equals("sos")) {
-                        String antiHijacking = Utils.getPreferences("anti-hijacking_" + tID, context);
+                        String antiHijacking = "";
+                        try{
+                            antiHijacking = Utils.getPreferences("anti-hijacking_" + tID, context);
+                        }catch (Exception e){
+                            Log.e("Util.getPreferences", "AntiHijacking Error:" + tID);
+                        }
+
                         if (antiHijacking.equals("ON")) {
                             startService(new Intent(context, AntiHijackingCountDownTimer.class));
                             openActiveHour(tID);
