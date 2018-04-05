@@ -88,7 +88,7 @@ dependencies {
     compile 'com.numetriclabz.numandroidcharts:numandroidcharts:1.0.8'
     compile 'com.github.PhilJay:MPAndroidChart:v2.0.9'
     compile 'com.wdullaer:materialdatetimepicker:2.4.0'
-    compile 'com.android.support:multidex:1.0.2'
+    compile 'com.android.support:multidex:1.0.1'
     compile 'de.hdodenhof:circleimageview:2.1.0'
     compile 'pl.droidsonroids.gif:android-gif-drawable:1.1.+'
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
