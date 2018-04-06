@@ -76,8 +76,8 @@ public class LoginActivity extends Activity {
         etUsername = (EditText) findViewById(R.id.etUserName);
         etPassword = (EditText) findViewById(R.id.etPassword);
 
-        etUsername.setText("clarke.daniel@outlook.com");
-        etPassword.setText("July1983");
+//        etUsername.setText("clarke.daniel@outlook.com");
+//        etPassword.setText("July@1983");
 
         btnLoging = (TextView) findViewById(R.id.btnLogin);
         checkBoxRemember = (CheckBox) findViewById(R.id.checkBoxRemember);
