@@ -55,8 +55,8 @@ public class StartingActivity extends Activity {
         assetsListURL = "https://api.navixy.com/v2/tracker/list?hash=" + hashCode;
         userInfoURL = "https://api.navixy.com/v2/user/get_info?hash=" + hashCode;
         carInfoURL = "https://api.navixy.com/v2/vehicle/list?hash=" + hashCode;
-        setContentView(R.layout.starting_activity);
-        Fabric.with(this, new Crashlytics());
+//        setContentView(R.layout.starting_activity);
+//        Fabric.with(this, new Crashlytics());
 
 //        ViewGroup layout = (ViewGroup) findViewById(android.R.id.content).getRootView();
 //        progressBar = new ProgressBar(this,null,android.R.attr.progressBarStyleLarge);
@@ -68,8 +68,8 @@ public class StartingActivity extends Activity {
 //        rl.setGravity(Gravity.CENTER);
 //        rl.addView(progressBar);
 //        layout.addView(rl,params);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
-                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
+//                WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
         getAssetData();
     }
     private void startApp(){
@@ -332,7 +332,7 @@ public class StartingActivity extends Activity {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         error.printStackTrace();
-                        startApp();
+                        runApp();
                     }
                 });
         AppSingleton.getInstance(context).addToRequestQueue(jsonRequest, "smartdrive");
